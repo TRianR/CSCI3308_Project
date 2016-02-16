@@ -71,4 +71,5 @@ The website will also include a forum and a scoreboard.
 
 ###Project Plan:
 * https://trello.com/b/KPJxUush
+* http://imgur.com/rxM7p5z
 
