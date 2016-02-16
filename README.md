@@ -8,7 +8,7 @@ Group repository for CSCI3308 Semester Project
 * Timmy's Lost Dimension 
 
 ###Description:
-* It a 2D side-scroller platformbased game accessed on a web browser. It is about a boy named Timmy who wanders through a portal and gets lost in various parallel dimensions.  Every level, you encounter various elements and are awarded points based on time.
+* "Timmy's Lost Dimension" (working title) is a 2D side-scroller platform based game accessed on a web browser. It is about a boy named Timmy who wanders through a portal and gets lost in various parallel dimensions.  Every level, you encounter various elements and are awarded points based on time.
 The website will also include a forum and a scoreboard. 
 
 ###Vision Statement 
@@ -45,7 +45,7 @@ The website will also include a forum and a scoreboard.
  
 
 ###Functional Requirements:
-* 010 Keep track of user score
+* 010 The system will keep track of user score
 
 ###Non-Functional Requirements:
 * 004 Recognizable image/icon for "Timmy" character -- 1
