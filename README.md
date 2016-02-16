@@ -42,6 +42,8 @@ The website will also include a forum and a scoreboard.
 * 006 As a player, I want to be able to pick up items --
 * 007 As a player, I want to see how many lives I have left --
 * 008 As a player, I want to see a message when I lose a life --
+ 
+
 ###Functional Requirements:
 * 
 
