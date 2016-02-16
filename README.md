@@ -5,17 +5,17 @@ Group repository for CSCI3308 Semester Project
 * Tyler Rostenbach, Cassie Souza, Tyler Glotz, Jessica Evans, Meri Burgess
 
 ###Title: 
-Timmy's Lost Dimension 
+* Timmy's Lost Dimension 
 
-Description:
-It a 2D side-scroller platformbased game accessed on a web browser. It is about a boy named Timmy who wanders through a portal and gets lost in various parallel dimensions.  Every level, you encounter various elements and are awarded points based on time.
+###Description:
+* It a 2D side-scroller platformbased game accessed on a web browser. It is about a boy named Timmy who wanders through a portal and gets lost in various parallel dimensions.  Every level, you encounter various elements and are awarded points based on time.
 The website will also include a forum and a scoreboard. 
 
-Vision Statement 
-We are making a dynamic game with a rich user experience that is entertaining and fun. 
+###Vision Statement 
+* We are making a dynamic game with a rich user experience that is entertaining and fun. 
 
-Motivation:
-To gain experience in web design, web app design, and game design while focusing on a project that is entertaining to us as developers as well as users. 
+###Motivation:
+* To gain experience in web design, web app design, and game design while focusing on a project that is entertaining to us as developers as well as users. 
 
 Risks:
 Design creep : too many feature ideas
