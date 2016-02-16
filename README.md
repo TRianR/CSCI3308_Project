@@ -35,11 +35,8 @@ The website will also include a forum and a scoreboard.
 
 ###User Requirements:
 * 001 As a player, I want to see my character -- 
-
 * 002 As a player, I want to move my character left and right with arrow keys -- 
-
 * 003 As a player, I want my character to jump using the up key --
-
 * 004 As a player, I want to see my score displayed on the screen -- 
 * 005 As a player, I want to see a message upon completion of a level --
 * 006 As a player, I want to be able to pick up items --
