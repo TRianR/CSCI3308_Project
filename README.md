@@ -46,11 +46,11 @@ The website will also include a forum and a scoreboard.
 
 ###Functional Requirements:
 * 010 The system will keep track of user score -- 3
-* 011 The system will keep track of how high a user can jump -- 
-* 015 The system will keep track of how far a user can fall -- 
-* 016 The system will determine what surfaces/area the user is "safe" in -- 
-* 017 The system will keep track of the player coordinates -- 
-* 012 The system will keep track of the user life score and item usage -- 
+* 011 The system will keep track of how high a user can jump -- 5
+* 015 The system will keep track of how far a user can fall -- 5
+* 016 The system will determine what surfaces/area the user is "safe"/"unsafe" in -- 3
+* 017 The system will keep track of the player coordinates -- 5
+* 012 The system will keep track of the user life score and active items -- 
 * 014 The system will keep track of time spent playing each level -- 5 
 
 ###Non-Functional Requirements:
