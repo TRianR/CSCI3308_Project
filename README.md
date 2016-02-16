@@ -50,13 +50,13 @@ The website will also include a forum and a scoreboard.
 * 015 The system will keep track of how far a user can fall -- 5
 * 016 The system will determine what surfaces/area the user is "safe"/"unsafe" in -- 3
 * 017 The system will keep track of the player coordinates -- 5
-* 012 The system will keep track of the user life score and active items -- 
+* 012 The system will keep track of the user life score and active items -- 2
 * 014 The system will keep track of time spent playing each level -- 5 
 
 ###Non-Functional Requirements:
 * 004 Recognizable image/icon for "Timmy" character -- 1
-* 009 Game runs on all browers -- 
-* 013 There will be a contained environment in which all action takes place based on an X&Y grid -- 
+* 009 Game runs on all browers -- 3
+* 013 There will be a contained environment in which all action takes place, based on an X&Y grid -- 5
 
 
 
