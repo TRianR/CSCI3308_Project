@@ -45,7 +45,7 @@ The website will also include a forum and a scoreboard.
  
 
 ###Functional Requirements:
-* 
+* 010 Keep track of user score
 
 ###Non-Functional Requirements:
 * 004 Recognizable image/icon for "Timmy" character -- 1
