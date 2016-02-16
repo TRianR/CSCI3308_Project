@@ -33,12 +33,15 @@ List of requirements:
 
 User Requirements:
 001 As a player, I want to see my character -- 
+
 002 As a player, I want to move my character left and right with arrow keys -- 
+
 003 As a player, I want my character to jump using the up key --
 
 Functional Requirements:
 
 Non-Functional Requirements:
+
 004 Image/icon for "Timmy" character -- 1
 
 
