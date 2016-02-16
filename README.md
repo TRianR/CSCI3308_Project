@@ -48,9 +48,8 @@ The website will also include a forum and a scoreboard.
 * 
 
 ###Non-Functional Requirements:
-* 
-* 004 Image/icon for "Timmy" character -- 1
-* 009 Game runs on all browers
+* 004 Recognizable image/icon for "Timmy" character -- 1
+* 009 Game runs on all browers -- 
 
 
 
