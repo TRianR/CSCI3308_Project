@@ -70,5 +70,5 @@ The website will also include a forum and a scoreboard.
 
 
 ###Project Plan:
-* 
-* https://trello.com/b/KPJxUush/timmy-s-lost-dimension
+* https://trello.com/b/KPJxUush
+
