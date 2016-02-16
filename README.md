@@ -42,6 +42,7 @@ The website will also include a forum and a scoreboard.
 * 006 As a player, I want to be able to pick up items -- 3
 * 007 As a player, I want to see how many lives I have left -- 2
 * 008 As a player, I want to see a message when I lose a life -- 2
+* 020 As a user, I want to talk about the game with other users on a forum -- 8
  
 
 ###Functional Requirements:
@@ -52,16 +53,18 @@ The website will also include a forum and a scoreboard.
 * 017 The system will keep track of the player coordinates -- 5
 * 012 The system will keep track of the user life score and active items -- 2
 * 014 The system will keep track of time spent playing each level -- 5 
+* 018 The systme will keep track of top 25 user scores and display them on a separate page -- 3
 
 ###Non-Functional Requirements:
 * 004 Recognizable image/icon for "Timmy" character -- 1
 * 009 Game runs on all browers -- 3
 * 013 There will be a contained environment in which all action takes place, based on an X&Y grid -- 5
+* 019 There will be multiple web pages -- 5 
 
 
 
 ###Methodology:
-* Mostly agile 
+* Mostly agile -- we have divided project into phases to work on and complete before moving on the the next phase
 * As time goes on (once we have an established first level), we will divide levels up and work on them individually 
 
 
