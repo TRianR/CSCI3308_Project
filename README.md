@@ -46,6 +46,8 @@ The website will also include a forum and a scoreboard.
 
 ###Functional Requirements:
 * 010 The system will keep track of user score
+* 011 The system will keep track of the user location based on actions --
+* 012 The system will keep track of the user life score and item usage --
 
 ###Non-Functional Requirements:
 * 004 Recognizable image/icon for "Timmy" character -- 1
