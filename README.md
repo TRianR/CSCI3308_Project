@@ -1,9 +1,11 @@
 # CSCI3308_Project
 Group repository for CSCI3308 Semester Project
 
-##Who: Tyler Rostenbach, Cassie Souza, Tyler Glotz, Jessica Evans, Meri Burgess
+###Who: 
+Tyler Rostenbach, Cassie Souza, Tyler Glotz, Jessica Evans, Meri Burgess
 
-##Title: Timmy's Lost Dimension 
+###Title: 
+Timmy's Lost Dimension 
 
 Description:
 It a 2D side-scroller platformbased game accessed on a web browser. It is about a boy named Timmy who wanders through a portal and gets lost in various parallel dimensions.  Every level, you encounter various elements and are awarded points based on time.
