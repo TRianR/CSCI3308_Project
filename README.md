@@ -2,7 +2,7 @@
 Group repository for CSCI3308 Semester Project
 
 ###Who: 
-*Tyler Rostenbach, Cassie Souza, Tyler Glotz, Jessica Evans, Meri Burgess
+* Tyler Rostenbach, Cassie Souza, Tyler Glotz, Jessica Evans, Meri Burgess
 
 ###Title: 
 Timmy's Lost Dimension 
