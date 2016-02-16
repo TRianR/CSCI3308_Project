@@ -52,6 +52,7 @@ The website will also include a forum and a scoreboard.
 ###Non-Functional Requirements:
 * 004 Recognizable image/icon for "Timmy" character -- 1
 * 009 Game runs on all browers -- 
+* 013 There will be a contained environment in which all action takes place -- 
 
 
 
