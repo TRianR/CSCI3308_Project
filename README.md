@@ -40,6 +40,11 @@ The website will also include a forum and a scoreboard.
 
 * 003 As a player, I want my character to jump using the up key --
 
+* 004 As a player, I want to see my score displayed on the screen -- 
+* 005 As a player, I want to see a message upon completion of a level --
+* 006 As a player, I want to be able to pick up items --
+* 007 As a player, I want to see how many lives I have left --
+* 008 As a player, I want to see a message when I lose a life --
 ###Functional Requirements:
 * 
 
