@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head> 
-<link rel="stylesheet" type="text/css" href="homepagestyle.css" >
+	<link rel="stylesheet" type="text/css" href="homepagestyle.css" >
 </head>
 
 <body> 
 <h1> 
+  <figure>
    <img src ="DummyBanner.jpg" alt ="Banner" /> 
+  </figure>
 </h1>
 
 <p> Welcome to the best game ever </p>
 
-<p> <a href = "Scoreboard"> Scoreboard </a> 
-<div></div>
-<a href = "Forum" > Forum </a> </p>
+<p id ="links">
+<ul> 
+ <li><a href = "Scoreboard"> Scoreboard </a> </li>
+ <li><a href = "Forum" > Forum </a></li> 
+</p>
 
-</body> 
+</body>
+
+<footer> 
+A CSCI 3308 Project by Meredith Burgess, Cassie Souza, Jessica Evans, Tyler Glotz, and Tyler Rostenbach
+</footer>
+
+
 </html>

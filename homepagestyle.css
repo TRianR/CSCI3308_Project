@@ -1,3 +1,31 @@
+
 body {
 	background-color: #b3d9ff;
+	text-align: center;
+	font: 18px courier;
 }
+
+ul  { 
+	list-style-type: none;
+	font: 12px;
+}
+
+ul li a:link {
+	color: #5b5bd7;
+	text-decoration: none;
+}
+
+ul li a:visited {
+	color: #6b00b3;
+}
+
+ul li a:hover{
+	text-decoration: underline; 
+}
+
+
+footer {
+	border-top: 1px solid grey;
+	font: 12px aerial;
+}
+
