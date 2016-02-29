@@ -5,6 +5,11 @@
 <h2> Scoreboard </h2>
 
 <p> There are no scores yet </p> 
+<p> 
+<a href="TLDHomepage" > Play the game! </a>
+<div> </div>
+<a href="Forum"> Talk about the game on the forum! </a> 
+</p>
 
 </body> 
 </html>
