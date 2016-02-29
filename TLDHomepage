@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <body> 
-<h1> Timmy's Lost Dimension </h1>
+<h1> 
+   <img src ="DummyBanner.jpg" alt ="Banner" /> 
+</h1>
+
 <p> Welcome to the best game ever </p>
 
 <p> <a href = "Scoreboard"> Scoreboard </a> 
