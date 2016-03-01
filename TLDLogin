@@ -15,10 +15,13 @@
 <p> SOS! Do you want to help Timmy find his way home or what? </p>
 
 <fieldset>
+<form action="TLDHomepage" method="post">
 
         <label>Username: <input class="text"  type="text" name="username"/></label><br/>
         <label>Password: <input class="text" type="password" name="pass"/></label><br/>
         <input type="submit"  value="Login"/>
+
+</form>
 </fieldset>
 
 <p id ="links">
