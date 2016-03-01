@@ -11,9 +11,9 @@
 </head>
 
 <body>
-	<form name="SignupForm">
-	<h2> Sign Up Page</h2>
-	<fieldset> 
+ <form action="TLDHomepage" method="post">
+ <h2> Sign Up Page</h2>
+ <fieldset> 
 	
 	<label>Full Name: <input type="text" name="fullname"/></label><br/>
 	<label>Username: <input type="text" name="username"/></label><br/>
@@ -22,7 +22,8 @@
 	<label>E-Mail: <input type="email" name="email"/></label><br/>
 	<input type="reset"/> <input type="submit" value="Login"/>
 
-	</fieldset>
-	</form>
+</form>
+</fieldset>
+	
 </body>
 </html> 
