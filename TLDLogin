@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head> 
+        <link rel="stylesheet" type="text/css" href="homepagestyle.css" >
+
+</head>
+
+<body>
+<h1> 
+  <figure>
+   <img src ="DummyBanner.jpg" alt ="Banner" /> 
+  </figure>
+</h1>
+
+<p> SOS! Do you want to help Timmy find his way home or what? </p>
+
+<fieldset>
+
+        <label>Username: <input class="text"  type="text" name="username"/></label><br/>
+        <label>Password: <input class="text" type="password" name="pass"/></label><br/>
+        <input type="submit"  value="Login"/>
+</fieldset>
+
+<p id ="links">
+<ul>
+ <li><a href = "TLDSignup"> SIGN UP</a> </li>
+</body>
+
+</html>
+
