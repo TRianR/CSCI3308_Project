@@ -2,6 +2,7 @@
 <html>
 <head> 
 	<link rel="stylesheet" type="text/css" href="homepagestyle.css" >
+	<script src='http://cdn.html5quintus.com/v0.2.0/quintus-all.js'></script>
 </head>
 
 <body> 
@@ -13,11 +14,22 @@
 
 <p> Welcome to the best game ever </p>
 
+
+
 <p id ="links">
 <ul> 
  <li><a href = "Scoreboard"> Scoreboard </a> </li>
- <li><a href = "Forum" > Forum </a></li> 
+ <li><a href = "Forum" > Forum </a> </li> 
+ <li><a href = “TLDLogin”> Login </a> </li>
+</ul>
 </p>
+
+<script> 
+
+
+
+
+</script>
 
 </body>
 

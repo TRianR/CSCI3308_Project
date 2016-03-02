@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<head>
+	   <link rel="stylesheet" type="text/css" href="homepagestyle.css" >
+</head>
 <body> 
 <h1>  <img src ="DummyBanner.jpg" alt ="Banner" />  </h1>
 <h2> Scoreboard </h2>
