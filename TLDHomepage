@@ -24,6 +24,8 @@
 </ul>
 </p>
 
+<canvas id = 'myGame' width = '500' height='500'> </canvas>
+
 <script> 
 
 
