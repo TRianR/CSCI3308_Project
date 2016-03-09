@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head> 
-	<link rel="stylesheet" type="text/css" href="homepagestyle.css" >
+	
 	<script src='http://cdn.html5quintus.com/v0.2.0/quintus-all.js'></script>
+       <link rel="stylesheet" type="text/css" href="homepagestyle.css" >
 </head>
 
 <body> 
@@ -26,12 +27,18 @@
 
 <canvas id = 'myGame' width = '500' height='500'> </canvas>
 
-<script> 
+<script>
+window.addEventListener('load', function() {
+var Q  = Quintus({development: true})
+			.include("Sprites, Scenes, Input")
+			.setup("myGame");
 
 
+});
 
 
 </script>
+
 
 </body>
 
