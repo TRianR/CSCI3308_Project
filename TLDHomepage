@@ -3,7 +3,8 @@
 <head> 
 	
 	<script src='http://cdn.html5quintus.com/v0.2.0/quintus-all.js'></script>
-       <link rel="stylesheet" type="text/css" href="homepagestyle.css" >
+	<script src='game_intro.js'></script>
+        <link rel="stylesheet" type="text/css" href="homepagestyle.css" >
 </head>
 
 <body> 
@@ -25,19 +26,8 @@
 </ul>
 </p>
 
-<canvas id = 'myGame' width = '500' height='500'> </canvas>
+<canvas id = 'gameContainer' width = '800' height='800' style='margin: auto;'> </canvas>
 
-<script>
-window.addEventListener('load', function() {
-var Q  = Quintus({development: true})
-			.include("Sprites, Scenes, Input")
-			.setup("myGame");
-
-
-});
-
-
-</script>
 
 
 </body>
