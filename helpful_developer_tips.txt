@@ -32,13 +32,23 @@ Scoreboard page:
 
 Forum page: 
 
+	Current Issues: 
 
+Data/Level.json:
+If you look at this file, it's just a bunch of vectors with 0s, 1s, and 2s. 
+These refer to tiles in images/tiles.png. 
+Changing the numbers changes which tile appears within the game container. 
 
-Data/Level.json
-If you look at this file, it's just a bunch of vectors with 0s, 1s, and 2s. These refer to tiles in images/tiles.png. Changing the numbers changes which tile appears within the game container. 
-
-Data/sprites.json
-This file defines different sprites based on dimensions of spritesheet. sx and sy are start-x and start y of where the sprite begins from top left corner. tileh and tilew define the height and width of sprite. 
+Data/sprites.json:
+This file defines different sprites based on dimensions of spritesheet. 
+sx and sy are start-x and start y of where the sprite begins from top left corner. 
+tileh and tilew define the height and width of sprite. 
 
 	Current issues: 
 		I still don't know what frames and col do. I messed with col at one point and the character disappeared, so be careful 
+
+Platformer_example
+There is a LOT of documentation in this file as it is basically just the tutorial
+game, so look it over if you are confused about functions and what they do. It is 
+our job to add more to this!!
+
