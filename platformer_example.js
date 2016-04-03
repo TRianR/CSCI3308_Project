@@ -49,7 +49,7 @@ Q.Sprite.extend("Player",{
 
       // Check the collision, if it's the Tower, you win!
       if(collision.obj.isA("Tower")) {
-        Q.stageScene("endGame",1, { label: "You Won!" }); 
+        Q.stageScene("endGame",1, { label: "Timmy fell down the well!" }); 
         this.destroy();
       }
     });
@@ -118,11 +118,11 @@ Q.scene("level1",function(stage) {
   stage.add("viewport").follow(player);
 
   // Add in a couple of enemies
-  stage.insert(new Q.Enemy({ x: 700, y: 0 }));
-  stage.insert(new Q.Enemy({ x: 800, y: 0 }));
+  //stage.insert(new Q.Enemy({ x: 700, y: 0 }));
+  //stage.insert(new Q.Enemy({ x: 800, y: 0 }));
 
   // Finally add in the tower goal
-  stage.insert(new Q.Tower({ x: 180, y: 50 }));
+  stage.insert(new Q.Tower({ x: 900, y: 210 }));
 });
 
 // To display a game over / game won popup box, 
