@@ -1,0 +1,44 @@
+
+This is a text file similar to a README just for us developers...
+PLEASE update when you can
+
+Homepage Notes: 
+Game appears in canvas element 
+Game ONLY appears when you open the page via a server, due to use of json data
+	To do this, c&p the following into command line: python -m SimpleHTTPServer 8000
+		    c&p the following into browser: http://127.0.0.1:8000/TLDHomepage.html (opens homepage)
+
+
+	Current Issues: 
+		Pages not linking to each other while using server 
+		Not sure if server must be run with python...I just copied what we did in lab 6 to make it work. There could a more elegant solution 
+		
+
+Host Website Notes: 
+URL: http://trianr.github.io/CSCI3308_Project/
+t
+	Current Issues:
+		Don't know how to update our repository files with this site 
+
+Sign Up and Login Pages: 
+
+	Current Issues: 
+		No database connected!!
+
+Scoreboard page:
+
+	Current Issues:
+		No database connected!!
+
+Forum page: 
+
+
+
+Data/Level.json
+If you look at this file, it's just a bunch of vectors with 0s, 1s, and 2s. These refer to tiles in images/tiles.png. Changing the numbers changes which tile appears within the game container. 
+
+Data/sprites.json
+This file defines different sprites based on dimensions of spritesheet. sx and sy are start-x and start y of where the sprite begins from top left corner. tileh and tilew define the height and width of sprite. 
+
+	Current issues: 
+		I still don't know what frames and col do. I messed with col at one point and the character disappeared, so be careful 
