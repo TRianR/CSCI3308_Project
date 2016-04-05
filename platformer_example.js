@@ -15,7 +15,7 @@ window.addEventListener("load",function() {
 var Q = window.Q = Quintus()
         .include("Sprites, Scenes, Input, 2D, Anim, Touch, UI")
         // Maximize this game to whatever the size of the browser is
-        .setup('quintusContainer' )
+        .setup('quintusContainer')
         // And turn on default input controls and touch input (for UI)
         .controls().touch()
 
@@ -122,7 +122,7 @@ Q.scene("level1",function(stage) {
   //stage.insert(new Q.Enemy({ x: 800, y: 0 }));
 
   // Finally add in the tower goal
-  stage.insert(new Q.Tower({ x: 900, y: 210 }));
+  stage.insert(new Q.Tower({ x: 900, y: 209 }));
 });
 
 // To display a game over / game won popup box, 
@@ -164,10 +164,15 @@ Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png", 
   Q.stageScene("level1");
 });
 
-
+// ## Possible Experimentations:
 // 
-//  Add in a second level by creating a level2.json and a level2 scene that gets
+// The are lots of things to try out here.
+// 
+// 1. Modify level.json to change the level around and add in some more enemies.
+// 2. Add in a second level by creating a level2.json and a level2 scene that gets
 //    loaded after level 1 is complete.
-/
+// 3. Add in a title screen
+// 4. Add in a hud and points for jumping on enemies.
+// 5. Add in a `Repeater` behind the TileLayer to create a paralax scrolling effect.
 
 });
