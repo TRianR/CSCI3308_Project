@@ -32,7 +32,7 @@ Scoreboard page:
 
 Forum page: 
 
-	Current Issues: 
+	Current Issues: None! Forum up and running
 
 Data/Level.json:
 If you look at this file, it's just a bunch of vectors with 0s, 1s, and 2s. 
