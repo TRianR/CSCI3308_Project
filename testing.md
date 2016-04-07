@@ -1,15 +1,24 @@
-Who: Tyler Glotz, Tyler Rostenbach, Meri Burgess, Jessica Evans, Cassie Souza
-Title: Timmys Lost Dimension
-Vision: We are making a dynamic game with a rich user experience that is entertaining and fun
-Automated Tests: Explanation and screenshot 
+### Who: 
+Tyler Glotz, Tyler Rostenbach, Meri Burgess, Jessica Evans, Cassie Souza
+###Title:
+Timmys Lost Dimension
+### Vision:
+We are making a dynamic game with a rich user experience that is entertaining and fun
 
-Tool used: Selenium
-Link: http://www.seleniumhq.org/
-Explanation: Selenium is a Firefox plugin used to automate testing for brower based applications. With Selenium you can record your actions in the browser and it will build a script. Then you can run that script as many times as necessary as a test or part of a test suite. You can also insert script functions manually. 
+# Automated Tests: 
+###Tool used:
+* Selenium
+* http://www.seleniumhq.org 
+### Explanation: 
+* Selenium is a Firefox plugin used to automate testing for brower based applications. With Selenium you can record your actions in the browser and it will build a script. Then you can run that script as many times as necessary as a test or part of a test suite. You can also insert script functions manually. 
+
+### Screenshots of tests:
+http://imgur.com/a/VRIBX
 
 
 
-User Acceptance Tests: Copy of at least three UAT plans
+# User Acceptance Tests: 
+Copy of at least three UAT plans
 
 |***********************************************************************|
 Use Case ID: UC-01
