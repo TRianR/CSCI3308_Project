@@ -56,9 +56,9 @@ Flow of Events:
 		| 2. Click on Play Game Button  | Directed to the Game Screen     |                                   |
 		| 3. Play game until end        | Displays score for current game |                                   |
 		| 4. Click on Scoreboard Button | Directed to the Scoreboard Page | Player sees update scoreboard     |
-Test Pass?: Pass or Fail
+Test Pass?: Fail
 Notes and Issues:
-|***********************************************************************|
+|Scoreboard database not up and running***********************************|
 
 
 |***********************************************************************|
@@ -74,9 +74,9 @@ Flow of Events:
 		| Actor Action             | System Action              | Comments |
 		|--------------------------|----------------------------|----------|
 		| 1. Click on Forum button | Directed to Forum page     |          |
-		| 2. Creates post          | Post is added to the forum |          |
+		| 2. Click "Start a topic" | Post is added to the forum |          |
 		| 3. Click on forum post   | Views forum post           |          |
-Test Pass?: Pass or Fail
-Notes and Issues:
-|***********************************************************************|
+Test Pass?: Pass
+Notes and Issues: 
+|User must login to be able to post to the forum |
 
