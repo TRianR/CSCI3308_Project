@@ -33,11 +33,11 @@ Flow of Events:
 		| Actor Action                                        | System Response            | Comments |
 		|-----------------------------------------------------|----------------------------|----------|
 		| 1. Clicked the Login from the Homepage              | Directed to the Login Page |          |
-		| 2. Entered in Username and Password into the fields | Access to previous  scores |          |
+		| 2. Entered in Username and Password into the fields | Access to previous  scores |Will work once databse 												   |is set up          
 
 Test Pass?:  Pass or Fail
 Notes and Issues:
-|***********************************************************************|
+|Still working on setting up a database, having issues connecting to local host|
 
 
 |***********************************************************************|
