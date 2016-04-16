@@ -18,6 +18,9 @@ var Q = window.Q = Quintus()
         .setup('quintusContainer')
         // And turn on default input controls and touch input (for UI)
         .controls().touch()
+        
+var MY_SCORE = 0;
+var MY_LIVES = 3;
 
 // ## Player Sprite
 // The very basic player sprite, this is just a normal sprite
@@ -92,6 +95,8 @@ Q.Sprite.extend("Enemy",{
       if(collision.obj.isA("Player")) { 
         this.destroy();
         collision.obj.p.vy = -300;
+        MY_SCORE += 10
+       Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES});
       }
     });
   }
@@ -116,10 +121,6 @@ Q.scene("level1",function(stage) {
   // Give the stage a moveable viewport and tell it
   // to follow the player.
   stage.add("viewport").follow(player);
-
-  // Add in a couple of enemies
-  //stage.insert(new Q.Enemy({ x: 700, y: 0 }));
-  //stage.insert(new Q.Enemy({ x: 800, y: 0 }));
 
   // Finally add in the tower goal
   stage.insert(new Q.Tower({ x: 900, y: 209 }));
@@ -167,6 +168,7 @@ Q.scene('endGame',function(stage) {
   // and restart the game.
   button.on("click",function() {
     Q.clearStages();
+    Q.stageScene("hud", 3, {score: 0, lives : 3} );
     Q.stageScene('level1');
   });
 
@@ -187,7 +189,7 @@ Q.scene('nextLevel', function(stage) {
                                                    
    button.on("click",function() {
    	 Q.clearStage(1);
-   	 //Q.stageScene("hud", 3, {score: MY_SCORE, lives : MY_LIVES});
+   	 Q.stageScene("hud", 3, {score: MY_SCORE, lives : MY_LIVES});
   	 Q.stageScene("level2");
    });
 
