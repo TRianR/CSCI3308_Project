@@ -194,6 +194,21 @@ Q.scene('nextLevel', function(stage) {
   container.fit(20);
 });
 
+Q.scene('hud', function(stage) {
+	var container = stage.insert(new Q.UI.Container({
+		x : 100,
+		y : 70
+		}));
+	var label = container.insert(new Q.UI.Text({x:50, y: -50,
+    label: "Score: " + stage.options.score, color: "white" }));
+
+   var strength = container.insert(new Q.UI.Text({x:250, y: -50,
+   label: "Lives: " + stage.options.lives, color: "white" }));
+    
+    container.fit(20);
+    
+ });
+
 // ## Asset Loading and Game Launch
 // Q.load can be called at any time to load additional assets
 // assets that are already loaded will be skipped
@@ -207,6 +222,7 @@ Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png,  
   Q.compileSheets("sprites.png","sprites.json");
 
   // Finally, call stageScene to run the game
+  Q.stageScene("hud", 3, {score: 0, lives : 3} );
   Q.stageScene("level1");
 });
 
