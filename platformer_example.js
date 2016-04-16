@@ -125,6 +125,32 @@ Q.scene("level1",function(stage) {
   stage.insert(new Q.Tower({ x: 900, y: 209 }));
 });
 
+Q.scene("level2", function(stage) { 
+	stage.insert(new Q.Repeater({ asset: "background-wall2.png", speedX: 0.5, speedY: 0.5 }))
+	
+	stage.collisionLayer(new Q.TileLayer({
+                             dataAsset: 'level.json',
+                             sheet:     'tiles2' }));
+    
+    stage.insert(new Q.UI.Text({ 
+      label: "Things are beginning to feel funny around here...",
+      color: "white",
+      x: 500,
+      y: 309,
+    }));
+                             
+    var player = stage.insert(new Q.Player());
+    stage.add("viewport").follow(player);
+    
+    stage.insert(new Q.Enemy({ x: 300, y: 0 }));
+    stage.insert(new Q.Enemy({ x: 500, y: 0 }));
+    stage.insert(new Q.Enemy({ x: 700, y: 0 }));
+  	stage.insert(new Q.Enemy({ x: 800, y: 0 }));
+  	
+  	stage.insert(new Q.Tower({ x: 900, y: 209 }));
+  	
+});
+
 // To display a game over / game won popup box, 
 // create a endGame scene that takes in a `label` option
 // to control the displayed message.
