@@ -49,7 +49,7 @@ Q.Sprite.extend("Player",{
 
       // Check the collision, if it's the Tower, you win!
       if(collision.obj.isA("Tower")) {
-        Q.stageScene("endGame",1, { label: "Timmy fell down the well!" }); 
+        Q.stageScene("nextLevel",1, { label: "Timmy fell down the well!" }); 
         this.destroy();
       }
     });
@@ -81,7 +81,7 @@ Q.Sprite.extend("Enemy",{
     // end the game unless the enemy is hit on top
     this.on("bump.left,bump.right,bump.bottom",function(collision) {
       if(collision.obj.isA("Player")) { 
-        Q.stageScene("endGame",1, { label: "You Died" }); 
+        Q.stageScene("endGame",1, { label: "Poor little Timmy died!" }); 
         collision.obj.destroy();
       }
     });
@@ -160,7 +160,7 @@ Q.scene('endGame',function(stage) {
   }));
 
   var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC",
-                                                  label: "Oh dear" }))         
+                                                  label: "Start Over?" }))         
   var label = container.insert(new Q.UI.Text({x:10, y: -10 - button.p.h, 
                                                    label: stage.options.label }));
   // When the button is clicked, clear all the stages
@@ -175,13 +175,33 @@ Q.scene('endGame',function(stage) {
   container.fit(20);
 });
 
+Q.scene('nextLevel', function(stage) { 
+	var container = stage.insert(new Q.UI.Container({
+    	x: Q.width/2, y: Q.height/2, fill: "rgba(0,0,0,0.5)"
+  	}));
+
+	var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC",
+                                                  label: "Oh me oh my..." }))         
+  	var label = container.insert(new Q.UI.Text({x:10, y: -10 - button.p.h, 
+                                                   label: stage.options.label }));
+                                                   
+   button.on("click",function() {
+   	 Q.clearStage(1);
+   	 //Q.stageScene("hud", 3, {score: MY_SCORE, lives : MY_LIVES});
+  	 Q.stageScene("level2");
+   });
+
+  container.fit(20);
+});
+
 // ## Asset Loading and Game Launch
 // Q.load can be called at any time to load additional assets
 // assets that are already loaded will be skipped
 // The callback will be triggered when everything is loaded
-Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png", function() {
+Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png,  background-wall2.png, tiles2.png", function() {
   // Sprites sheets can be created manually
   Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
+  Q.sheet("tiles2", "tiles2.png", { tilew: 32, tileh: 32 });
 
   // Or from a .json asset that defines sprite locations
   Q.compileSheets("sprites.png","sprites.json");
