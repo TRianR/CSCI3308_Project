@@ -84,8 +84,15 @@ Q.Sprite.extend("Enemy",{
     // end the game unless the enemy is hit on top
     this.on("bump.left,bump.right,bump.bottom",function(collision) {
       if(collision.obj.isA("Player")) { 
+      	if(MY_LIVES <= 0) {
+      	Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES})
         Q.stageScene("endGame",1, { label: "Poor little Timmy died!" }); 
         collision.obj.destroy();
+        }
+        else { 
+        	MY_LIVES =- 1;
+        	Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES});
+        }
       }
     });
 
@@ -146,7 +153,7 @@ Q.scene("level2", function(stage) {
     stage.insert(new Q.Enemy({ x: 300, y: 0 }));
     stage.insert(new Q.Enemy({ x: 500, y: 0 }));
     stage.insert(new Q.Enemy({ x: 700, y: 0 }));
-  	stage.insert(new Q.Enemy({ x: 800, y: 0 }));
+  	//stage.insert(new Q.Enemy({ x: 800, y: 0 }));
   	
   	stage.insert(new Q.Tower({ x: 900, y: 209 }));
   	
