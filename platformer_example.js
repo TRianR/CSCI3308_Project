@@ -109,7 +109,7 @@ Q.scene("level2", function(stage) {
 	stage.insert(new Q.Repeater({ asset: "background-wall2.png", speedX: 0.5, speedY: 0.5 }))
 	
 	stage.collisionLayer(new Q.TileLayer({
-                             dataAsset: 'level.json',
+                             dataAsset: 'level2.json',
                              sheet:     'tiles2' }));
     
     stage.insert(new Q.UI.Text({ 
@@ -192,7 +192,7 @@ Q.scene('hud', function(stage) {
 // Q.load can be called at any time to load additional assets
 // assets that are already loaded will be skipped
 // The callback will be triggered when everything is loaded
-Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png,  background-wall2.png, tiles2.png", function() {
+Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png,  background-wall2.png, tiles2.png, level2.json", function() {
   // Sprites sheets created manually
   Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
   Q.sheet("tiles2", "tiles2.png", { tilew: 32, tileh: 32 });
