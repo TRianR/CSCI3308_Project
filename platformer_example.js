@@ -67,7 +67,7 @@ Q.Sprite.extend("Enemy",{
         collision.obj.destroy();
         }
         else { 
-        	MY_LIVES =- 1;
+        	MY_LIVES -= 1;
         	Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES});
         }
       }
