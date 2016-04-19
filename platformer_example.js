@@ -62,8 +62,12 @@ Q.Sprite.extend("Enemy",{
     // end the game unless the enemy is hit on top
     this.on("bump.left,bump.right,bump.bottom",function(collision) {
       if(collision.obj.isA("Player")) { 
+		  // Play hurt audio
 		  Q.audio.play('Hit_Hurt.mp3');
       	if(MY_LIVES <= 0) {
+		// Stops music and all sounds upon game ending
+		Q.audio.stop();
+			
       	Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES})
         Q.stageScene("endGame",1, { label: "Poor little Timmy died!" }); 
         collision.obj.destroy();
@@ -82,6 +86,7 @@ Q.Sprite.extend("Enemy",{
         this.destroy();
         collision.obj.p.vy = -300;
         MY_SCORE += 10
+        // play jump audio when landing ontop of enemy
         Q.audio.play('Jump.mp3')
        Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES});
       }
@@ -94,7 +99,8 @@ Q.scene("level1",function(stage) {
 
   // Add in a repeater for a little parallax action
   stage.insert(new Q.Repeater({ asset: "background-wall.png", speedX: 0.5, speedY: 0.5 }));
-
+  // start music
+	Q.audio.play('Music.mp3',{ loop: true });
   // Add in a tile layer, and make it the collision layer
   stage.collisionLayer(new Q.TileLayer({
                              dataAsset: 'level.json',
@@ -195,7 +201,7 @@ Q.scene('hud', function(stage) {
 // Q.load can be called at any time to load additional assets
 // assets that are already loaded will be skipped
 // The callback will be triggered when everything is loaded
-Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png,  background-wall2.png, tiles2.png, Hit_Hurt.mp3, Jump.mp3, level2.json", function() {
+Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png,  background-wall2.png, tiles2.png, Hit_Hurt.mp3, Jump.mp3, Music.mp3, level2.json", function() {
   // Sprites sheets created manually
   Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
   Q.sheet("tiles2", "tiles2.png", { tilew: 32, tileh: 32 });
