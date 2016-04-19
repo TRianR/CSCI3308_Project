@@ -99,6 +99,15 @@ Q.Sprite.extend("Enemy",{
   }
 });
 
+//Adding alien sprites to level
+Q.Sprite.extend("Alien", {
+  init: function(p) {
+    this._super(p, { sheet: 'alien', vx: 100 });
+    this.add("2d, aiBounce, commonenemy ");
+      asset: "alien.png"
+    }  
+ });
+
 // ## Level1 scene
 Q.scene("level1",function(stage) {
 
@@ -141,6 +150,34 @@ Q.scene("level2", function(stage) {
     stage.insert(new Q.Enemy({ x: 700, y: 0 }));
   	
   	stage.insert(new Q.Tower({ x: 900, y: 209 }));
+  	
+});
+
+// ## Level3 scene
+Q.scene("level3", function(stage) { 
+	stage.insert(new Q.Repeater({ asset: "background-wall3.png", speedX: 0.5, speedY: 0.5 }))
+	
+	stage.collisionLayer(new Q.TileLayer({
+                             dataAsset: 'level3.json',
+                             sheet:     'tiles3' }));
+    
+    stage.insert(new Q.UI.Text({ 
+      label: "Mom...I don't think I'm on Earth anymore",
+      color: "white",
+      x: 500,
+      y: 309,
+    }));
+                             
+    var player = stage.insert(new Q.Player()); 
+    
+    stage.add("viewport").follow(player);
+    
+    stage.insert(new Q.Alien({ x: 300, y: 0 }));
+    stage.insert(new Q.Alien({ x: 500, y: 0 }));
+    stage.insert(new Q.Alien({ x: 700, y: 0 }));
+  	
+  	stage.insert(new Q.Tower({ x: 900, y: 209 }));
+  	
   	
 });
 
@@ -190,6 +227,25 @@ Q.scene('nextLevel', function(stage) {
   container.fit(20);
 });
 
+Q.scene('lastLevel', function(stage) { 
+	var container = stage.insert(new Q.UI.Container({
+    	x: Q.width/2, y: Q.height/2, fill: "rgba(0,0,0,0.5)"
+  	}));
+
+	var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC",
+                                                  label: "Not again..." }))         
+  	var label = container.insert(new Q.UI.Text({x:10, y: -10 - button.p.h, 
+                                                   label: stage.options.label }));
+                                                   
+   button.on("click",function() {
+   	 Q.clearStage(1);
+   	 Q.stageScene("hud", 3, {score: MY_SCORE, lives : MY_LIVES});
+  	 Q.stageScene("level3");
+   });
+
+  container.fit(20);
+});
+
 Q.scene('hud', function(stage) {
 	var container = stage.insert(new Q.UI.Container({
 		x : 100,
@@ -209,14 +265,22 @@ Q.scene('hud', function(stage) {
 // Q.load can be called at any time to load additional assets
 // assets that are already loaded will be skipped
 // The callback will be triggered when everything is loaded
-Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png,  background-wall2.png, tiles2.png, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3, level2.json", function() {
+Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png,  background-wall2.png, tiles2.png, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3, level2.json, background-wall3.png, level3.json, tiles3.png, alien.png, alien.json", function() {
   // Sprites sheets created manually
   Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
   Q.sheet("tiles2", "tiles2.png", { tilew: 32, tileh: 32 });
+  Q.sheet("tiles3", "tiles3.png", { tilew: 32, tileh: 32 });
 
   //Sprite sheets from .json asset that define sprite locations
   Q.compileSheets("sprites.png","sprites.json");
-
+  Q.compileSheets("alien.png","alien.json");
+  
+  //var alien = new Q.Alien(); 
+  //Q.gameLoop(function(dt) {
+    //Q.clear();
+    //alien.update(dt);
+    //alien.render(Q.ctx);
+  //});
   
   Q.stageScene("hud", 3, {score: 0, lives : 3} );
   Q.stageScene("level1");
