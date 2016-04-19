@@ -35,6 +35,9 @@ Q.Sprite.extend("Player",{
     this.on("hit.sprite",function(collision) {
 
       if(collision.obj.isA("Tower")) {
+		  // Timmy going down well sound -> 'well.mp3/.wav/.ogg'
+		  Q.audio.play('well.mp3');
+		  
         Q.stageScene("nextLevel",1, { label: "Timmy fell down the well!" }); 
         this.destroy();
       }
@@ -86,8 +89,10 @@ Q.Sprite.extend("Enemy",{
         this.destroy();
         collision.obj.p.vy = -300;
         MY_SCORE += 10
+        
         // play jump audio when landing ontop of enemy
-        Q.audio.play('Jump.mp3')
+        Q.audio.play('Jump.mp3');
+        
        Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES});
       }
     });
@@ -146,6 +151,9 @@ Q.scene('endGame',function(stage) {
   var container = stage.insert(new Q.UI.Container({
     x: Q.width/2, y: Q.height/2, fill: "rgba(0,0,0,0.5)"
   }));
+  
+	// Play sound for when Timmy dies -> 'death.mp3/.wav/.ogg'
+	Q.audio.play('death.mp3');
 
   var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC",
                                                   label: "Start Over?" }))         
@@ -201,7 +209,7 @@ Q.scene('hud', function(stage) {
 // Q.load can be called at any time to load additional assets
 // assets that are already loaded will be skipped
 // The callback will be triggered when everything is loaded
-Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png,  background-wall2.png, tiles2.png, Hit_Hurt.mp3, Jump.mp3, Music.mp3, level2.json", function() {
+Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png,  background-wall2.png, tiles2.png, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3, level2.json", function() {
   // Sprites sheets created manually
   Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
   Q.sheet("tiles2", "tiles2.png", { tilew: 32, tileh: 32 });
