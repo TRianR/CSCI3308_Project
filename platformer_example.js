@@ -8,10 +8,11 @@ window.addEventListener("load",function() {
 
 // Set up an instance of the Quintus engine  and include
 // the Sprites, Scenes, Input and 2D module
-var Q = window.Q = Quintus()
-        .include("Sprites, Scenes, Input, 2D, Anim, Touch, UI")
+var Q = window.Q = Quintus({audioSupported: [ 'wav','mp3','ogg' ]})
+        .include("Sprites, Scenes, Input, 2D, Anim, Touch, UI, Audio")
         .setup('quintusContainer')
         .controls().touch()
+        .enableSound();
         
 var MY_SCORE = 0;
 var MY_LIVES = 3;
@@ -61,6 +62,7 @@ Q.Sprite.extend("Enemy",{
     // end the game unless the enemy is hit on top
     this.on("bump.left,bump.right,bump.bottom",function(collision) {
       if(collision.obj.isA("Player")) { 
+		  Q.audio.play('Hit_Hurt.mp3');
       	if(MY_LIVES <= 0) {
       	Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES})
         Q.stageScene("endGame",1, { label: "Poor little Timmy died!" }); 
@@ -80,6 +82,7 @@ Q.Sprite.extend("Enemy",{
         this.destroy();
         collision.obj.p.vy = -300;
         MY_SCORE += 10
+        Q.audio.play('Jump.mp3')
        Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES});
       }
     });
@@ -192,7 +195,7 @@ Q.scene('hud', function(stage) {
 // Q.load can be called at any time to load additional assets
 // assets that are already loaded will be skipped
 // The callback will be triggered when everything is loaded
-Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png,  background-wall2.png, tiles2.png, level2.json", function() {
+Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png,  background-wall2.png, tiles2.png, Hit_Hurt.mp3, Jump.mp3, level2.json", function() {
   // Sprites sheets created manually
   Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
   Q.sheet("tiles2", "tiles2.png", { tilew: 32, tileh: 32 });
