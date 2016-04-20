@@ -33,9 +33,7 @@ Q.Sprite.extend("Player",{
 
     this.add('2d, platformerControls, animation');
     
-    if(Q.inputs['left']) {
-    	this.play("walk");
-    }
+
    // this.on("walk", function() {
     //	this.p.vy = 0;
     //	if(this.p.vx != 0) { 
@@ -208,10 +206,8 @@ Q.scene("level1",function(stage) {
 
   var player = stage.insert(new Q.Player());
   
-
   stage.add("viewport").follow(player);
- // player.play("walk");
-
+ 
   stage.insert(new Q.Tower({ x: 900, y: 209 }));
   stage.insert(new Q.drumstick( { x: 875, y: 209}));
 });
@@ -392,7 +388,7 @@ Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png,  
   	walk: { frames:[1, 2], rate: 1/15, loop: true},
   	stand: {frames: [0], rate: 1/10},
   	jump: { frames: [3], rate: 1/10},
-  	hurt: { frames: [4], rate: 1/10}
+  	hurt: { frames: [4], rate: 1/10, loop: false }
   });
   //var alien = new Q.Alien(); 
   //Q.gameLoop(function(dt) {
