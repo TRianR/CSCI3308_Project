@@ -253,7 +253,9 @@ Q.scene('endGame',function(stage) {
 
   button.on("click",function() {
     Q.clearStages();
-    Q.stageScene("hud", 3, {score: 0, lives : 3} );
+    MY_LIVES = 3;
+    MY_SCORE = 0;
+    Q.stageScene("hud", 3, {score: MY_SCORE, lives : MY_LIVES} );
     Q.stageScene('level1');
   });
 
