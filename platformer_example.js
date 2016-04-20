@@ -25,12 +25,25 @@ Q.Sprite.extend("Player",{
 
     // You can call the parent's constructor with this._super(..)
     this._super(p, {
-      sheet: "player",  // Setting a sprite sheet sets sprite width and height
-      x: 410,           
+      //sprite "player_anim",
+      sheet: "player_anim", // Setting a sprite sheet sets sprite width and height
+ 	  x: 410,           
       y: 90             
     });
 
-    this.add('2d, platformerControls');
+    this.add('2d, platformerControls, animation');
+    
+    if(Q.inputs['left']) {
+    	this.play("walk");
+    }
+   // this.on("walk", function() {
+    //	this.p.vy = 0;
+    //	if(this.p.vx != 0) { 
+    //		this.play("walk");
+    //	} else {
+    //		this.play("stand"); 
+    //	}
+   // });
     
     this.on("hit.sprite",function(collision) {
 
@@ -194,8 +207,10 @@ Q.scene("level1",function(stage) {
                              sheet:     'tiles' }));
 
   var player = stage.insert(new Q.Player());
+  
 
   stage.add("viewport").follow(player);
+ // player.play("walk");
 
   stage.insert(new Q.Tower({ x: 900, y: 209 }));
   stage.insert(new Q.drumstick( { x: 875, y: 209}));
@@ -360,7 +375,7 @@ Q.scene('mute', function(stage) {
 // Q.load can be called at any time to load additional assets
 // assets that are already loaded will be skipped
 // The callback will be triggered when everything is loaded
-Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png,  background-wall2.png, tiles2.png, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3, level2.json, background-wall3.png, level3.json, tiles3.png, alien.png, alien.json, portal.png, portal.json, collectables.png, collectables.json, bite.wav", function() {
+Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png,  background-wall2.png, tiles2.png, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3, level2.json, background-wall3.png, level3.json, tiles3.png, alien.png, alien.json, portal.png, portal.json, collectables.png, collectables.json, bite.wav, timmyanim.png, timmyanim.json", function() {
   // Sprites sheets created manually
   Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
   Q.sheet("tiles2", "tiles2.png", { tilew: 32, tileh: 32 });
@@ -371,7 +386,14 @@ Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png,  
   Q.compileSheets("alien.png","alien.json");
   Q.compileSheets("portal.png","portal.json");
   Q.compileSheets("collectables.png", "collectables.json");
+  Q.compileSheets("timmyanim.png", "timmyanim.json");
   
+  Q.animations("Player", {
+  	walk: { frames:[1, 2], rate: 1/15, loop: true},
+  	stand: {frames: [0], rate: 1/10},
+  	jump: { frames: [3], rate: 1/10},
+  	hurt: { frames: [4], rate: 1/10}
+  });
   //var alien = new Q.Alien(); 
   //Q.gameLoop(function(dt) {
     //Q.clear();
