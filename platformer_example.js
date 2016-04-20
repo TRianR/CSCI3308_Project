@@ -32,35 +32,38 @@ Q.Sprite.extend("Player",{
     });
 
     this.add('2d, platformerControls, animation');
-    
-
-   // this.on("walk", function() {
-    //	this.p.vy = 0;
-    //	if(this.p.vx != 0) { 
-    //		this.play("walk");
-    //	} else {
-    //		this.play("stand"); 
-    //	}
-   // });
+    this.on('walk');
+    this.on('jump');
     
     this.on("hit.sprite",function(collision) {
 
       if(collision.obj.isA("Tower")) {
-		  // Timmy going down well sound -> 'well.mp3/.wav/.ogg'
-		  Q.audio.play('well.mp3');
-		  
+		// Timmy going down well sound -> 'well.mp3/.wav/.ogg'
+		Q.audio.play('well.mp3');
         Q.stageScene("nextLevel",1, { label: "Timmy fell down the well!" }); 
         this.destroy();
       }
        else if(collision.obj.isA("Portal")) {
-		  // Timmy going down well sound -> 'well.mp3/.wav/.ogg'
-		  Q.audio.play('well.mp3');
-		  
+	    // Timmy going down well sound -> 'well.mp3/.wav/.ogg'
+		Q.audio.play('well.mp3');
         Q.stageScene("lastLevel",1, { label: "Where to now... " }); 
         this.destroy();
       }
     });
-
+  },
+  
+  walk: function(dt) {
+    	if(this.p.vx != 0) { 
+    		this.play("walk");
+    	} else {
+    		this.play("stand"); 
+    	}
+  	},
+  	
+  jump: function(dt) {
+  	if(this.p.vy != 0) {
+   		this.play("jump");
+  	}
   }
 
 });
