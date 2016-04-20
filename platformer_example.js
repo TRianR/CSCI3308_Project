@@ -163,16 +163,22 @@ Q.Sprite.extend("Alien", {
  Q.Sprite.extend("drumstick", {
  	init: function(p) {
  		this._super(p, { sheet : "drumstick" }); 
- 		 
- 		this.on("sensor");
- 		},
+ 		
+ 		this.add("2d");
+ 	this.on("bump.top, bump.left,bump.right,bump.bottom",function(collision) {
+      if(collision.obj.isA("Player")) { 
+        this.destroy();
+        //collision.obj.p.vy = -300;
+        MY_SCORE += 10
+        
+        // play jump audio when landing ontop of enemy
+        Q.audio.play('bite.wav');
+        
+       Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES});
+      }	 
+    });
  	
- 	sensor: function(collision) { 
- 		MY_SCORE += 10;
- 		Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES});
- 		this.destroy(); 
  	}
- 	
  });
  		
 // ## Level1 scene
@@ -192,7 +198,7 @@ Q.scene("level1",function(stage) {
   stage.add("viewport").follow(player);
 
   stage.insert(new Q.Tower({ x: 900, y: 209 }));
-  stage.insert(new Q.drumstick( { x: 800, y: 210}));
+  stage.insert(new Q.drumstick( { x: 875, y: 209}));
 });
 
 // ## Level2 scene
@@ -354,7 +360,7 @@ Q.scene('mute', function(stage) {
 // Q.load can be called at any time to load additional assets
 // assets that are already loaded will be skipped
 // The callback will be triggered when everything is loaded
-Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png,  background-wall2.png, tiles2.png, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3, level2.json, background-wall3.png, level3.json, tiles3.png, alien.png, alien.json, portal.png, portal.json, collectables.png, collectables.json", function() {
+Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png,  background-wall2.png, tiles2.png, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3, level2.json, background-wall3.png, level3.json, tiles3.png, alien.png, alien.json, portal.png, portal.json, collectables.png, collectables.json, bite.wav", function() {
   // Sprites sheets created manually
   Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
   Q.sheet("tiles2", "tiles2.png", { tilew: 32, tileh: 32 });
