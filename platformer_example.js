@@ -256,6 +256,7 @@ Q.scene('endGame',function(stage) {
     MY_LIVES = 3;
     MY_SCORE = 0;
     Q.stageScene("hud", 3, {score: MY_SCORE, lives : MY_LIVES} );
+    Q.stageScene("mute", 4);
     Q.stageScene('level1');
   });
 
@@ -317,6 +318,23 @@ Q.scene('hud', function(stage) {
     
  });
 
+Q.scene('mute', function(stage) {
+   var container = stage.insert(new Q.UI.Container({
+		x : 50,
+		y : 470
+		}));
+	
+   var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC",
+                                                  label: "Mute" })) 
+    
+   button.on("click",function() {
+   	Q.audio.stop();
+   });
+   
+    container.fit(20);
+    
+ });
+
 // ## Asset Loading and Game Launch
 // Q.load can be called at any time to load additional assets
 // assets that are already loaded will be skipped
@@ -340,6 +358,7 @@ Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png,  
   //});
   
   Q.stageScene("hud", 3, {score: 0, lives : 3} );
+  Q.stageScene("mute", 4);
   Q.stageScene("level1");
 });
 
