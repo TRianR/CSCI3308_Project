@@ -16,6 +16,7 @@ var Q = window.Q = Quintus({audioSupported: [ 'wav','mp3','ogg' ]})
         
 var MY_SCORE = 0;
 var MY_LIVES = 3;
+var MY_LEVEL = 1; 
 
 // ## Player Sprite
 Q.Sprite.extend("Player",{
@@ -40,25 +41,25 @@ Q.Sprite.extend("Player",{
       if(collision.obj.isA("Tower")) {
 		// Timmy going down well sound -> 'well.mp3/.wav/.ogg'
 		Q.audio.play('well.mp3');
-        Q.stageScene("nextLevel",1, { label: "Timmy fell down the well!" }); 
+       Q.stageScene("stageNextLevel", 1, {buttontext : "Oh me oh my", label: "Timmy fell down the well!" }); 
         this.destroy();
       }
       else if(collision.obj.isA("Ufo")) {
 	    // Timmy going down well sound -> 'well.mp3/.wav/.ogg'
 		Q.audio.play('well.mp3');
-        Q.stageScene("lastLevel",1, { label: "Where to now... " }); 
+       Q.stageScene("stageNextLevel", 1, {buttontext : "Mom...MOM!!!", label: "Where to now?" }); 
         this.destroy();
       }
        else if(collision.obj.isA("Portal")) {
 	    // Timmy going down well sound -> 'well.mp3/.wav/.ogg'
-		Q.audio.play('well.mp3');
-        Q.stageScene("stageLevel4",1, { label: "On the the next dimension!!" }); 
+		Q.audio.play('well.mp3'); 
+        Q.stageScene("stageNextLevel", 1, {buttontext : "Huzzah!", label: "On the the next dimension!!" }); 
         this.destroy();
       }
       else if(collision.obj.isA("Door")) {
 	    // Timmy going down well sound -> 'well.mp3/.wav/.ogg'
 		Q.audio.play('well.mp3');
-        Q.stageScene("firstLevel",1, { label: "On the the next dimension!!" }); 
+		Q.stageScene("stageNextLevel", 1, {buttontext : "Huweeee", label: "It just keeps going!" });  
         this.destroy();
       }
     });
@@ -303,9 +304,9 @@ Q.scene("level2", function(stage) {
     var player = stage.insert(new Q.Player());
     stage.add("viewport").follow(player);
     
-    stage.insert(new Q.Enemy({ x: 300, y: 0 }));
-    stage.insert(new Q.Enemy({ x: 500, y: 0 }));
-    stage.insert(new Q.Enemy({ x: 700, y: 0 }));
+   stage.insert(new Q.Enemy({ x: 300, y: 0 }));
+   stage.insert(new Q.Enemy({ x: 500, y: 0 }));
+   stage.insert(new Q.Enemy({ x: 700, y: 0 }));
   	
   	stage.insert(new Q.Ufo({ x: 900, y: 209 }));
   
@@ -333,7 +334,7 @@ Q.scene("level3", function(stage) {
     
     stage.insert(new Q.Alien({ x: 300, y: 0 }));
     stage.insert(new Q.Alien({ x: 600, y: 0 }));
-    stage.insert(new Q.Alien({ x: 700, y: 0 }));
+   stage.insert(new Q.Alien({ x: 700, y: 0 }));
   	
   	stage.insert(new Q.Portal({ x: 1000, y: 209 }));
   	
@@ -364,6 +365,29 @@ Q.scene("level4",function(stage) {
   stage.insert(new Q.Door({ x: 32, y: 43}));
   stage.insert(new Q.drumstick( { x: 875, y: 209}));
 });
+
+
+// Level 5 
+// Developed by Meri 
+// Psychedelic theme -- puzzle based 
+Q.scene("level5", function(stage) { 
+	stage.insert(new Q.Repeater( { asset: "background-wall5.png", speedX: 0.5, speedY: 0.5})); 
+	
+	stage.collisionLayer(new Q.TileLayer({
+                             dataAsset: 'level5.json',
+                             sheet:     'tiles5' }));
+	
+	var player = stage.insert(new Q.Player());
+	stage.add("viewport").follow(player);
+	
+	// To do: insert enemies
+	// 		  insert collectables
+	// 		  design staging 
+	//        insert portal 
+	
+}); 
+
+
 // To display a game over / game won popup box, 
 // create a endGame scene that takes in a `label` option
 // to control the displayed message.
@@ -412,61 +436,37 @@ Q.scene('firstLevel', function(stage) {
   container.fit(20);
 });
 
-Q.scene('nextLevel', function(stage) { 
+Q.scene('stageNextLevel', function(stage) { 
+	MY_LEVEL += 1;  
+	 
 	var container = stage.insert(new Q.UI.Container({
     	x: Q.width/2, y: Q.height/2, fill: "rgba(0,0,0,0.5)"
   	}));
-
-	var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC",
-                                                  label: "Oh me oh my..." }))         
+  	
+  	var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC",
+                                                  label: stage.options.buttontext }))         
   	var label = container.insert(new Q.UI.Text({x:10, y: -10 - button.p.h, 
                                                    label: stage.options.label }));
-                                                   
-   button.on("click",function() {
+                                             
+    button.on("click",function() {
    	 Q.clearStage(1);
    	 Q.stageScene("hud", 3, {score: MY_SCORE, lives : MY_LIVES});
+   	 
+   	 if (MY_LEVEL == 2){
   	 Q.stageScene("level2");
-   });
-
-  container.fit(20);
-});
-
-Q.scene('lastLevel', function(stage) { 
-	var container = stage.insert(new Q.UI.Container({
-    	x: Q.width/2, y: Q.height/2, fill: "rgba(0,0,0,0.5)"
-  	}));
-
-	var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC",
-                                                  label: "Mom...MOM!!!" }))         
-  	var label = container.insert(new Q.UI.Text({x:10, y: -10 - button.p.h, 
-                                                   label: stage.options.label }));
-                                                   
-   button.on("click",function() {
-   	 Q.clearStage(1);
-   	 Q.stageScene("hud", 3, {score: MY_SCORE, lives : MY_LIVES});
+  	 }
+  	 if (MY_LEVEL == 3){
   	 Q.stageScene("level3");
-   });
-
-  container.fit(20);
-});
-Q.scene('stageLevel4', function(stage) { 
-	var container = stage.insert(new Q.UI.Container({
-    	x: Q.width/2, y: Q.height/2, fill: "rgba(0,0,0,0.5)"
-  	}));
-
-	var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC",
-                                                  label: "?????" }))         
-  	var label = container.insert(new Q.UI.Text({x:10, y: -10 - button.p.h, 
-                                                   label: stage.options.label }));
-                                                   
-   button.on("click",function() {
-   	 Q.clearStage(1);
-   	 Q.stageScene("hud", 3, {score: MY_SCORE, lives : MY_LIVES});
+  	 }
+  	 if (MY_LEVEL == 4){
   	 Q.stageScene("level4");
+  	 }
+  	 if (MY_LEVEL == 5){
+  	 Q.stageScene("level5");
+  	 }
    });
-
-  container.fit(20);
-});
+  	
+}); 
 
 Q.scene('hud', function(stage) {
 	var container = stage.insert(new Q.UI.Container({
@@ -504,12 +504,13 @@ Q.scene('mute', function(stage) {
 // Q.load can be called at any time to load additional assets
 // assets that are already loaded will be skipped
 // The callback will be triggered when everything is loaded
-Q.load("sprites.png, sprites.json, door.png, door.json, level.json, level4.json, tiles4.png, tiles.png, background-wall.png,  background-wall2.png, background-wall4.png, tiles2.png, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3, level2.json, background-wall3.png, level3.json, tiles3.png, alien.png, alien.json, portal.png, portal.json, collectables.png, collectables.json, bite.wav, timmyanim.png, timmyanim.json, fire.png, fire.json, ufo.png, ufo.json", function() {
+Q.load("sprites.png, sprites.json, door.png, door.json, level.json, level4.json, tiles4.png, tiles.png, background-wall.png,  background-wall2.png, background-wall4.png, tiles2.png, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3, level2.json, background-wall3.png, level3.json, tiles3.png, alien.png, alien.json, portal.png, portal.json, collectables.png, collectables.json, bite.wav, timmyanim.png, timmyanim.json, fire.png, fire.json, ufo.png, ufo.json, background-wall5.png, tiles5.png", function() {
   // Sprites sheets created manually
   Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
   Q.sheet("tiles2", "tiles2.png", { tilew: 32, tileh: 32 });
   Q.sheet("tiles3", "tiles3.png", { tilew: 32, tileh: 32 });
   Q.sheet("tiles4", "tiles4.png", { tilew: 32, tileh: 32});
+  Q.sheet("tiles5", "tiles5.png", { tilew: 32, tileh: 32});
   //Sprite sheets from .json asset that define sprite locations
   Q.compileSheets("sprites.png","sprites.json");
   Q.compileSheets("alien.png","alien.json");
