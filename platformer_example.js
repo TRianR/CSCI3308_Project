@@ -440,7 +440,7 @@ Q.scene('stageNextLevel', function(stage) {
 	MY_LEVEL += 1;  
 	 
 	var container = stage.insert(new Q.UI.Container({
-    	x: Q.width/2, y: Q.height/2, fill: "rgba(0,0,0,0.5)"
+    	x: Q.width/2, y: Q.height/2, fill: "rgba(255,255,255,0.75)"
   	}));
   	
   	var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC",
