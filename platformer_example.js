@@ -58,7 +58,7 @@ Q.Sprite.extend("Player",{
       else if(collision.obj.isA("Door")) {
 	    // Timmy going down well sound -> 'well.mp3/.wav/.ogg'
 		Q.audio.play('well.mp3');
-        Q.stageScene(0, { label: "On the the next dimension!!" }); 
+        Q.stageScene("firstLevel",1, { label: "On the the next dimension!!" }); 
         this.destroy();
       }
     });
@@ -391,6 +391,24 @@ Q.scene('endGame',function(stage) {
 
   // Expand the container to visibily fit it's contents
   // (with a padding of 20 pixels)
+  container.fit(20);
+});
+Q.scene('firstLevel', function(stage) { 
+	var container = stage.insert(new Q.UI.Container({
+    	x: Q.width/2, y: Q.height/2, fill: "rgba(0,0,0,0.5)"
+  	}));
+
+	var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC",
+                                                  label: "Here we go again..." }))         
+  	var label = container.insert(new Q.UI.Text({x:10, y: -10 - button.p.h, 
+                                                   label: stage.options.label }));
+                                                   
+   button.on("click",function() {
+   	 Q.clearStage(1);
+   	 Q.stageScene("hud", 3, {score: MY_SCORE, lives : MY_LIVES});
+  	 Q.stageScene("level1");
+   });
+
   container.fit(20);
 });
 
