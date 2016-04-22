@@ -417,7 +417,7 @@ Q.scene('endGame',function(stage) {
   // (with a padding of 20 pixels)
   container.fit(20);
 });
-Q.scene('firstLevel', function(stage) { 
+Q.scene('stageFirstLevel', function(stage) { 
 	var container = stage.insert(new Q.UI.Container({
     	x: Q.width/2, y: Q.height/2, fill: "rgba(0,0,0,0.5)"
   	}));
@@ -465,6 +465,8 @@ Q.scene('stageNextLevel', function(stage) {
   	 Q.stageScene("level5");
   	 }
    });
+   
+   container.fit(20);
   	
 }); 
 
@@ -478,10 +480,12 @@ Q.scene('hud', function(stage) {
 
    var strength = container.insert(new Q.UI.Text({x:250, y: -50,
    label: "Lives: " + stage.options.lives, color: "white" }));
+   
     
     container.fit(20);
     
  });
+
 
 Q.scene('mute', function(stage) {
    var container = stage.insert(new Q.UI.Container({
@@ -499,6 +503,7 @@ Q.scene('mute', function(stage) {
     container.fit(20);
     
  });
+ 
 
 // ## Asset Loading and Game Launch
 // Q.load can be called at any time to load additional assets
