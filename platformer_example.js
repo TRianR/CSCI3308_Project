@@ -17,9 +17,7 @@ var Q = window.Q = Quintus({audioSupported: [ 'wav','mp3','ogg' ]})
 var MY_SCORE = 0;
 var MY_LIVES = 3;
 var MY_LEVEL = 1; 
-var level5_red = 0;
-var level5_blue = 0; 
-
+ 
 // ## Player Sprite
 Q.Sprite.extend("Player",{
 
@@ -76,10 +74,6 @@ Q.Sprite.extend("Player",{
 		Q.stageScene("stageNextLevel", 1, {buttontext : "Blaaaah", label: "When will it be over??" });  
         this.destroy();
       }
-      else if(collision.obj.isA("red_Psyche")) {
-			this.p.x = 870;
-			this.p.y = 80;
-		}
     });
   },
   
@@ -428,6 +422,8 @@ Q.scene("level5", function(stage) {
 	
 	stage.add("viewport").follow(player);
 	
+	var section = 1; 
+	
 	//Test collectable
 	stage.insert(new Q.drumstick( { x: 875, y: 80}));
 	
@@ -435,17 +431,54 @@ Q.scene("level5", function(stage) {
 	stage.insert(new Q.red_Psyche({ x: 130, y: 173}));
 	stage.insert(new Q.blue_Psyche({ x: 1600, y: 173}));
 	
+	// Section 2 
+	stage.insert(new Q.blue_Psyche({ x: 350, y: 300}));
+	stage.insert(new Q.red_Psyche({ x: 870, y: 300}));
+	
+	//Section 3
+	stage.insert(new Q.blue_Psyche({ x: 1070, y: 300}));
+	stage.insert(new Q.red_Psyche({ x: 1800, y: 490})); 
+	
+	//Section 4 
+	stage.insert(new Q.blue_Psyche({ x:1900, y:175 }));
+	stage.insert(new Q.red_Psyche({ x: 1785, y:175 }));
 	
 	player.on("hit.sprite",function(collision) {
-		if(collision.obj.isA("red_Psyche")) {
-			player.x = 870;
-			player.y = 80;
+		if(collision.obj.isA("blue_Psyche")) {
+			if (section == 1) {
+				player.p.x = 870;
+				player.p.y = 80;
+			}
+			else if (section == 2){
+				player.p.x = 1950;
+				player.p.y = 300;
+				section += 1;
+			}
+			else if (section == 3) {
+				player.p.x = 1850;
+				player.p.y = 80;
+				section += 1;
+			}
+		}
+		else if(collision.obj.isA("red_Psyche")) {
+			if (section == 1){
+				player.p.x = 550;
+				player.p.y = 300;
+				section += 1;
+			}
+			else if (section == 2){
+				player.p.x = 550;
+				player.p.y = 300;
+			}
+			else if (section == 3){
+				player.p.x = 1950;
+				player.p.y = 300;
+			}
 		}
 	});
 	
-	stage.insert(new Q.blue_Psyche({ x: 350, y: 300}));
-	stage.insert(new Q.blue_Psyche({ x: 870, y: 300}));
-	stage.insert(new Q.blue_Psyche({ x: 1070, y: 300}));
+	
+	
 	stage.insert(new Q.blue_Psyche({ x: 770, y: 500}));
 	// To do: 
 	//        insert portals 
@@ -717,7 +750,7 @@ Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.j
   
   Q.stageScene("hud", 3, {score: 0, lives : 3} );
   Q.stageScene("mute", 4);
-  Q.stageScene("level1");
+  Q.stageScene("level5");
 });
 
 
