@@ -317,9 +317,9 @@ Q.scene("level2", function(stage) {
     var player = stage.insert(new Q.Player());
     stage.add("viewport").follow(player);
     
-   stage.insert(new Q.Enemy({ x: 300, y: 0 }));
-   stage.insert(new Q.Enemy({ x: 500, y: 0 }));
-   stage.insert(new Q.Enemy({ x: 700, y: 0 }));
+ //  stage.insert(new Q.Enemy({ x: 300, y: 0 }));
+ //  stage.insert(new Q.Enemy({ x: 500, y: 0 }));
+ //  stage.insert(new Q.Enemy({ x: 700, y: 0 }));
   	
   	stage.insert(new Q.Ufo({ x: 900, y: 209 }));
   
@@ -345,9 +345,9 @@ Q.scene("level3", function(stage) {
     
     stage.add("viewport").follow(player);
     
-    stage.insert(new Q.Alien({ x: 300, y: 0 }));
-    stage.insert(new Q.Alien({ x: 600, y: 0 }));
-   stage.insert(new Q.Alien({ x: 700, y: 0 }));
+  //  stage.insert(new Q.Alien({ x: 300, y: 0 }));
+ //   stage.insert(new Q.Alien({ x: 600, y: 0 }));
+ //  stage.insert(new Q.Alien({ x: 700, y: 0 }));
   	
   	stage.insert(new Q.Portal({ x: 1000, y: 209 }));
   	
@@ -368,15 +368,15 @@ Q.scene("level4",function(stage) {
   var player = stage.insert(new Q.Player());
   
   stage.add("viewport").follow(player);
- stage.insert(new Q.Fire({ x: 250, y: 200 }));
- stage.insert(new Q.Fire({ x: 200, y: 0 }));
- stage.insert(new Q.Fire({ x: 350, y: 0 }));
- stage.insert(new Q.Fire({ x: 400, y: 0 }));
- stage.insert(new Q.Fire({ x: 550, y: 0 }));
- stage.insert(new Q.Fire({ x: 600, y: 0 }));
- stage.insert(new Q.Fire({ x: 1200, y: 100}));
+// stage.insert(new Q.Fire({ x: 250, y: 200 }));
+// stage.insert(new Q.Fire({ x: 200, y: 0 }));
+// stage.insert(new Q.Fire({ x: 350, y: 0 }));
+// stage.insert(new Q.Fire({ x: 400, y: 0 }));
+// stage.insert(new Q.Fire({ x: 550, y: 0 }));
+// stage.insert(new Q.Fire({ x: 600, y: 0 }));
+// stage.insert(new Q.Fire({ x: 1200, y: 100}));
   stage.insert(new Q.Door({ x: 32, y: 43}));
-  stage.insert(new Q.drumstick( { x: 875, y: 209}));
+//  stage.insert(new Q.drumstick( { x: 875, y: 209}));
   
 });
 
@@ -392,6 +392,7 @@ Q.scene("level5", function(stage) {
                              sheet:     'tiles5' }));
 	
 	var player = stage.insert(new Q.Player());
+	
 	stage.add("viewport").follow(player);
 	
 	// To do: insert enemies
@@ -627,7 +628,7 @@ Q.scene('mute', function(stage) {
 // Q.load can be called at any time to load additional assets
 // assets that are already loaded will be skipped
 // The callback will be triggered when everything is loaded
-Q.load("sprites.png, sprites.json, door.png, door.json, level.json, riceball.png, riceball.json, level4.json, level9.json, level8.json, level7.json, tiles4.png, tiles.png, background-wall6.png, background-wall.png,  background-wall2.png, background-wall4.png, background-wall7.png, tiles2.png, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3, level2.json, background-wall3.png, level3.json, tiles3.png, alien.png, alien.json, portal.png, portal.json, collectables.png, collectables.json, bite.wav, timmyanim.png, timmyanim.json, fire.png, fire.json, ufo.png, ufo.json, tiles6.png, background-wall5.png, tiles5.png", function() {
+Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.json, level8.json, level9.json, sprites.json, door.json, alien.json, riceball.json, collectables.json, ufo.json, fire.json, timmyanim.json, background-wall.png, background-wall2.png, background-wall3.png, background-wall4.png, background-wall5.png, background-wall6.png, background-wall7.png, tiles.png, tiles2.png, tiles3.png, tiles4.png, tiles5.png, tiles6.png, alien.png, portal.png, portal.json, timmyanim.png, fire.png, ufo.png, door.png, sprites.png, riceball.png, collectables.png, bite.wav, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3 ", function() {
   // Sprites sheets created manually
   Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
   Q.sheet("tiles2", "tiles2.png", { tilew: 32, tileh: 32 });
