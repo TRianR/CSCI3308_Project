@@ -68,6 +68,12 @@ Q.Sprite.extend("Player",{
 		Q.stageScene("stageNextLevel", 1, {buttontext : "I think I have a stomach ache!", label: "Yummy" });  
         this.destroy();
       }
+      else if(collision.obj.isA("green_Psyche")) {
+	    // Timmy going down well sound -> 'well.mp3/.wav/.ogg'
+		Q.audio.play('well.mp3');
+		Q.stageScene("stageNextLevel", 1, {buttontext : "Blaaaah", label: "When will it be over??" });  
+        this.destroy();
+      }
     });
   },
   
@@ -418,13 +424,13 @@ Q.scene("level5", function(stage) {
 	
 	stage.insert(new Q.drumstick( { x: 875, y: 80}));
 	
-	stage.insert(new Q.blue_Psyche({ x: 130, y: 173}));
+	stage.insert(new Q.red_Psyche({ x: 130, y: 173}));
 	
-	stage.insert(new Q.red_Psyche({ x: 1600, y: 173}));
-	stage.insert(new Q.green_Psyche({ x: 350, y: 300}));
-	stage.insert(new Q.red_Psyche({ x: 870, y: 300}));
+	stage.insert(new Q.green_Psyche({ x: 1600, y: 173}));
+	stage.insert(new Q.blue_Psyche({ x: 350, y: 300}));
+	stage.insert(new Q.blue_Psyche({ x: 870, y: 300}));
 	stage.insert(new Q.blue_Psyche({ x: 1070, y: 300}));
-	stage.insert(new Q.red_Psyche({ x: 770, y: 500}));
+	stage.insert(new Q.blue_Psyche({ x: 770, y: 500}));
 	// To do: 
 	//        insert portals 
 	// 		  connect portals
@@ -695,7 +701,7 @@ Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.j
   
   Q.stageScene("hud", 3, {score: 0, lives : 3} );
   Q.stageScene("mute", 4);
-  Q.stageScene("level5");
+  Q.stageScene("level1");
 });
 
 
