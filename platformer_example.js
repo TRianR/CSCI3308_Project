@@ -284,6 +284,7 @@ Q.Sprite.extend("Alien", {
     }  
  });
  
+ //Drumstick collectable. Worth 10 points. 
  Q.Sprite.extend("drumstick", {
  	init: function(p) {
  		this._super(p, { sheet : "drumstick" }); 
@@ -292,10 +293,50 @@ Q.Sprite.extend("Alien", {
  	this.on("bump.top, bump.left,bump.right,bump.bottom",function(collision) {
       if(collision.obj.isA("Player")) { 
         this.destroy();
-        //collision.obj.p.vy = -300;
         MY_SCORE += 10
         
-        // play jump audio when landing ontop of enemy
+        // play eat audio when gathering
+        Q.audio.play('bite.wav');
+        
+       Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES});
+      }	 
+    });
+ 	
+ 	}
+ });
+ 
+//Find lost dog! Collectable. Worth 100 points. (Super special).
+  Q.Sprite.extend("doggy", {
+ 	init: function(p) {
+ 		this._super(p, { sheet : "doggy" }); 
+ 		
+ 	  this.add("2d, aiBounce");
+ 	  this.on("bump.top, bump.left,bump.right,bump.bottom",function(collision) {
+      if(collision.obj.isA("Player")) { 
+      this.destroy();
+      MY_SCORE += 100
+        
+        Q.audio.play('bark.wav');
+        
+       Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES});
+      }	 
+    });
+ 	
+ 	}
+ });
+ 
+ //Candy collectable. Worth 10 points. 
+  Q.Sprite.extend("candy", {
+ 	init: function(p) {
+ 		this._super(p, { sheet : "candy" }); 
+ 		
+ 	  this.add("2d");
+ 	  this.on("bump.top, bump.left,bump.right,bump.bottom",function(collision) {
+      if(collision.obj.isA("Player")) { 
+        this.destroy();
+        MY_SCORE += 10
+        
+        // play eat audio when gathering
         Q.audio.play('bite.wav');
         
        Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES});
@@ -425,9 +466,11 @@ Q.scene("level5", function(stage) {
 	var section = 1;
 	var redCheck = 0; 
 	
-	//Rubber Baby Buggy Bumper Rager!!!
+	//Rubber Baby Buggy Bumper Rager!!! == Clue for order of psyches to follow (Red-Blue-Blue-Blue-Red-Blue/Redx3->Blue)
 	//Test collectable
 	stage.insert(new Q.drumstick( { x: 875, y: 80}));
+	stage.insert(new Q.candy( { x: 975, y: 120}));
+	stage.insert(new Q.doggy( { x: 275, y: 120}));
 	
 	//Section 1 
 	stage.insert(new Q.red_Psyche({ x: 130, y: 173}));
@@ -762,7 +805,7 @@ Q.scene('mute', function(stage) {
 // Q.load can be called at any time to load additional assets
 // assets that are already loaded will be skipped
 // The callback will be triggered when everything is loaded
-Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.json, level8.json, level9.json, sprites.json, door.json, alien.json, riceball.json, collectables.json, ufo.json, fire.json, timmyanim.json, psyches.json, background-wall.png, background-wall2.png, background-wall3.png, background-wall4.png, background-wall5.png, background-wall6.png, background-wall7.png, tiles.png, tiles2.png, tiles3.png, tiles4.png, tiles5.png, tiles6.png, alien.png, portal.png, portal.json, timmyanim.png, fire.png, ufo.png, door.png, sprites.png, riceball.png, collectables.png, psyches.png, bite.wav, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3 ", function() {
+Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.json, level8.json, level9.json, sprites.json, door.json, alien.json, riceball.json, collectables.json, ufo.json, fire.json, timmyanim.json, psyches.json, background-wall.png, background-wall2.png, background-wall3.png, background-wall4.png, background-wall5.png, background-wall6.png, background-wall7.png, tiles.png, tiles2.png, tiles3.png, tiles4.png, tiles5.png, tiles6.png, alien.png, portal.png, portal.json, timmyanim.png, fire.png, ufo.png, door.png, sprites.png, riceball.png, collectables.png, psyches.png, bite.wav, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3, bark.wav", function() {
   // Sprites sheets created manually
   Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
   Q.sheet("tiles2", "tiles2.png", { tilew: 32, tileh: 32 });
@@ -799,7 +842,7 @@ Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.j
   
   Q.stageScene("hud", 3, {score: 0, lives : 3} );
   Q.stageScene("mute", 4);
-  Q.stageScene("level1");
+  Q.stageScene("level5");
 });
 
 
