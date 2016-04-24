@@ -17,6 +17,8 @@ var Q = window.Q = Quintus({audioSupported: [ 'wav','mp3','ogg' ]})
 var MY_SCORE = 0;
 var MY_LIVES = 3;
 var MY_LEVEL = 1; 
+var level5_red = 0;
+var level5_blue = 0; 
 
 // ## Player Sprite
 Q.Sprite.extend("Player",{
@@ -74,6 +76,10 @@ Q.Sprite.extend("Player",{
 		Q.stageScene("stageNextLevel", 1, {buttontext : "Blaaaah", label: "When will it be over??" });  
         this.destroy();
       }
+      else if(collision.obj.isA("red_Psyche")) {
+			this.p.x = 870;
+			this.p.y = 80;
+		}
     });
   },
   
@@ -422,12 +428,21 @@ Q.scene("level5", function(stage) {
 	
 	stage.add("viewport").follow(player);
 	
-	
+	//Test collectable
 	stage.insert(new Q.drumstick( { x: 875, y: 80}));
 	
+	//Section 1 
 	stage.insert(new Q.red_Psyche({ x: 130, y: 173}));
+	stage.insert(new Q.blue_Psyche({ x: 1600, y: 173}));
 	
-	stage.insert(new Q.green_Psyche({ x: 1600, y: 173}));
+	
+	player.on("hit.sprite",function(collision) {
+		if(collision.obj.isA("red_Psyche")) {
+			player.x = 870;
+			player.y = 80;
+		}
+	});
+	
 	stage.insert(new Q.blue_Psyche({ x: 350, y: 300}));
 	stage.insert(new Q.blue_Psyche({ x: 870, y: 300}));
 	stage.insert(new Q.blue_Psyche({ x: 1070, y: 300}));
