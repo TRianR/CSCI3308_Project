@@ -59,7 +59,7 @@ Q.Sprite.extend("Player",{
       else if(collision.obj.isA("Door")) {
 	    // Timmy going down well sound -> 'well.mp3/.wav/.ogg'
 		Q.audio.play('well.mp3');
-		Q.stageScene("stageNextLevel", 1, {buttontext : "Huweeee", label: "It just keeps going!" });  
+		Q.stageScene("stageNextLevel", 1, {buttontext : "Huh?", label: "Rubber Baby Bugger Bumper Rager!!!" });  
         this.destroy();
       }
 	  else if(collision.obj.isA("riceball")) {
@@ -71,7 +71,7 @@ Q.Sprite.extend("Player",{
       else if(collision.obj.isA("green_Psyche")) {
 	    // Timmy going down well sound -> 'well.mp3/.wav/.ogg'
 		Q.audio.play('well.mp3');
-		Q.stageScene("stageNextLevel", 1, {buttontext : "Blaaaah", label: "When will it be over??" });  
+		Q.stageScene("stageNextLevel", 1, {buttontext : "Huweeeee", label: "When will it be over??" });  
         this.destroy();
       }
     });
@@ -165,7 +165,7 @@ Q.Sprite.extend("Enemy",{
       	if(MY_LIVES <= 0) {
 		// Stops music and all sounds upon game ending
 		Q.audio.stop();
-			
+		MY_LEVEL = 1;
       	Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES})
         Q.stageScene("endGame",1, { label: "Poor little Timmy died!" }); 
         collision.obj.destroy();
@@ -209,7 +209,7 @@ Q.Sprite.extend("Fire",{
       	if(MY_LIVES <= 0) {
 		// Stops music and all sounds upon game ending
 		Q.audio.stop();
-			
+		MY_LEVEL = 1;
       	Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES})
         Q.stageScene("endGame",1, { label: "Poor little Timmy died!" }); 
         collision.obj.destroy();
@@ -422,14 +422,16 @@ Q.scene("level5", function(stage) {
 	
 	stage.add("viewport").follow(player);
 	
-	var section = 1; 
+	var section = 1;
+	var redCheck = 0; 
 	
+	//Rubber Baby Buggy Bumper Rager!!!
 	//Test collectable
 	stage.insert(new Q.drumstick( { x: 875, y: 80}));
 	
 	//Section 1 
 	stage.insert(new Q.red_Psyche({ x: 130, y: 173}));
-	stage.insert(new Q.blue_Psyche({ x: 1600, y: 173}));
+	stage.insert(new Q.blue_Psyche({ x: 1560, y: 173}));
 	
 	// Section 2 
 	stage.insert(new Q.blue_Psyche({ x: 350, y: 300}));
@@ -443,8 +445,23 @@ Q.scene("level5", function(stage) {
 	stage.insert(new Q.blue_Psyche({ x:1900, y:175 }));
 	stage.insert(new Q.red_Psyche({ x: 1785, y:175 }));
 	
+	//Section 5
+	stage.insert(new Q.blue_Psyche({ x: 48, y: 400 }));
+	stage.insert(new Q.red_Psyche({ x: 630, y: 495 }));
+	
+	//Section 6
+	stage.insert(new Q.blue_Psyche({ x: 945, y: 495 }));
+	stage.insert(new Q.red_Psyche({ x: 1584, y: 496 }));
+	
+	//Section 7 (secret)
+	stage.insert(new Q.blue_Psyche({ x: 2075, y: 75 }));
+	
+	//Psyche to level 6
+	stage.insert(new Q.green_Psyche({ x: 800, y: 400}));
+	
 	player.on("hit.sprite",function(collision) {
 		if(collision.obj.isA("blue_Psyche")) {
+			Q.audio.play('well.mp3');
 			if (section == 1) {
 				player.p.x = 870;
 				player.p.y = 80;
@@ -459,8 +476,26 @@ Q.scene("level5", function(stage) {
 				player.p.y = 80;
 				section += 1;
 			}
+			else if (section == 4){
+				player.p.x = 200;
+				player.p.y = 490;
+				section += 1;
+			}
+			else if (section == 5){
+				player.p.x = 140;
+				player.p.y= 490;
+			}
+			else if (section == 6){
+				player.p.x = 700;
+				player.p.y = 410;
+			}
+			else if (section == 7) {
+				player.p.x = 700;
+				player.p.y = 410;
+			}
 		}
 		else if(collision.obj.isA("red_Psyche")) {
+			Q.audio.play('well.mp3');
 			if (section == 1){
 				player.p.x = 550;
 				player.p.y = 300;
@@ -474,15 +509,29 @@ Q.scene("level5", function(stage) {
 				player.p.x = 1950;
 				player.p.y = 300;
 			}
+			else if (section == 4){
+				player.p.x = 1850;
+				player.p.y = 80;
+			}
+			else if (section == 5){
+				player.p.x = 1250;
+				player.p.y = 420;
+				section += 1;		
+			}
+			else if (section == 6 && redCheck != 2){
+				player.p.x = 1250;
+				player.p.y = 420;
+				redCheck += 1;
+			}
+			else if (section == 6 && redCheck == 2){
+				player.p.x = 1000;
+				player.p.y = 0; 
+				section += 1;
+			}
 		}
 	});
 	
-	
-	
-	stage.insert(new Q.blue_Psyche({ x: 770, y: 500}));
 	// To do: 
-	//        insert portals 
-	// 		  connect portals
 	// 		  include collectables
 	
 }); 
@@ -750,7 +799,7 @@ Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.j
   
   Q.stageScene("hud", 3, {score: 0, lives : 3} );
   Q.stageScene("mute", 4);
-  Q.stageScene("level5");
+  Q.stageScene("level1");
 });
 
 
