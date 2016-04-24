@@ -467,22 +467,37 @@ Q.scene("level5", function(stage) {
 	var redCheck = 0; 
 	
 	//Rubber Baby Buggy Bumper Rager!!! == Clue for order of psyches to follow (Red-Blue-Blue-Blue-Red-Blue/Redx3->Blue)
-	//Test collectable
-	stage.insert(new Q.drumstick( { x: 875, y: 80}));
-	stage.insert(new Q.candy( { x: 975, y: 120}));
-	stage.insert(new Q.doggy( { x: 275, y: 120}));
+
 	
 	//Section 1 
 	stage.insert(new Q.red_Psyche({ x: 130, y: 173}));
 	stage.insert(new Q.blue_Psyche({ x: 1560, y: 173}));
+	stage.insert(new Q.drumstick( { x: 475, y: 120}));
+	stage.insert(new Q.candy( { x: 625, y: 120}));
+	stage.insert(new Q.drumstick( { x: 775, y: 120}));
+	stage.insert(new Q.candy( { x: 825, y: 120}));
+	stage.insert(new Q.drumstick( { x: 975, y: 120}));
+	stage.insert(new Q.candy( { x: 1125, y: 120}));
+	stage.insert(new Q.drumstick( { x: 1275, y: 120}));
+	stage.insert(new Q.candy( { x: 1425, y: 120}));
 	
 	// Section 2 
 	stage.insert(new Q.blue_Psyche({ x: 350, y: 300}));
 	stage.insert(new Q.red_Psyche({ x: 870, y: 300}));
+	stage.insert(new Q.drumstick( { x: 500, y: 270}));
+	stage.insert(new Q.drumstick( { x: 725, y: 270}));
 	
 	//Section 3
 	stage.insert(new Q.blue_Psyche({ x: 1070, y: 300}));
 	stage.insert(new Q.red_Psyche({ x: 1800, y: 490})); 
+	stage.insert(new Q.candy( { x: 1850, y: 480}));
+	stage.insert(new Q.candy( { x: 1900, y: 480}));
+	stage.insert(new Q.candy( { x: 1950, y: 480}));
+	stage.insert(new Q.candy( { x: 2000, y: 480}));
+	stage.insert(new Q.candy( { x: 2050, y: 480}));
+	stage.insert(new Q.candy( { x: 2100, y: 480}));
+	stage.insert(new Q.candy( { x: 2150, y: 480}));
+	stage.insert(new Q.candy( { x: 2200, y: 480}));
 	
 	//Section 4 
 	stage.insert(new Q.blue_Psyche({ x:1900, y:175 }));
@@ -491,13 +506,24 @@ Q.scene("level5", function(stage) {
 	//Section 5
 	stage.insert(new Q.blue_Psyche({ x: 48, y: 400 }));
 	stage.insert(new Q.red_Psyche({ x: 630, y: 495 }));
+	stage.insert(new Q.drumstick( { x: 60, y: 450}));
+	stage.insert(new Q.drumstick( { x: 125, y: 480}));
+	stage.insert(new Q.candy( { x: 350, y: 450}));
 	
 	//Section 6
 	stage.insert(new Q.blue_Psyche({ x: 945, y: 495 }));
 	stage.insert(new Q.red_Psyche({ x: 1584, y: 496 }));
+	stage.insert(new Q.drumstick( { x: 1145, y: 480}));
+	stage.insert(new Q.drumstick( { x: 1045, y: 480}));
+	stage.insert(new Q.candy( { x: 1440, y: 450}));
+	stage.insert(new Q.candy( { x: 1470, y: 450}));
+	stage.insert(new Q.candy( { x: 1500, y: 450}));
+	stage.insert(new Q.candy( { x: 1530, y: 450}));
+	stage.insert(new Q.candy( { x: 1560, y: 450}));
 	
 	//Section 7 (secret)
 	stage.insert(new Q.blue_Psyche({ x: 2075, y: 75 }));
+	stage.insert(new Q.doggy( { x: 2175, y: 75}));
 	
 	//Psyche to level 6
 	stage.insert(new Q.green_Psyche({ x: 800, y: 400}));
@@ -573,9 +599,6 @@ Q.scene("level5", function(stage) {
 			}
 		}
 	});
-	
-	// To do: 
-	// 		  include collectables
 	
 }); 
 
