@@ -255,6 +255,7 @@ Q.Sprite.extend("Alien", {
 		Q.audio.stop();
 			
       	Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES})
+      	MY_LEVEL = 1;
         Q.stageScene("endGame",1, { label: "Poor little Timmy died!" }); 
         collision.obj.destroy();
         }
