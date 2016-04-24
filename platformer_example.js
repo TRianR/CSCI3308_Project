@@ -467,7 +467,6 @@ Q.scene("level5", function(stage) {
 	var redCheck = 0; 
 	
 	//Rubber Baby Buggy Bumper Rager!!! == Clue for order of psyches to follow (Red-Blue-Blue-Blue-Red-Blue/Redx3->Blue)
-
 	
 	//Section 1 
 	stage.insert(new Q.red_Psyche({ x: 130, y: 173}));
@@ -865,7 +864,7 @@ Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.j
   
   Q.stageScene("hud", 3, {score: 0, lives : 3} );
   Q.stageScene("mute", 4);
-  Q.stageScene("level5");
+  Q.stageScene("level1");
 });
 
 
