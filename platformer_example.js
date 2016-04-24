@@ -296,7 +296,8 @@ Q.scene("level1",function(stage) {
   stage.add("viewport").follow(player);
  
   stage.insert(new Q.Tower({ x: 900, y: 209 }));
-  stage.insert(new Q.drumstick( { x: 875, y: 209}));
+  stage.insert(new Q.drumstick( { x: 875, y: 90}));
+  
 });
 
 // ## Level2 scene
@@ -317,9 +318,9 @@ Q.scene("level2", function(stage) {
     var player = stage.insert(new Q.Player());
     stage.add("viewport").follow(player);
     
- //  stage.insert(new Q.Enemy({ x: 300, y: 0 }));
- //  stage.insert(new Q.Enemy({ x: 500, y: 0 }));
- //  stage.insert(new Q.Enemy({ x: 700, y: 0 }));
+   stage.insert(new Q.Enemy({ x: 300, y: 0 }));
+   stage.insert(new Q.Enemy({ x: 500, y: 0 }));
+   stage.insert(new Q.Enemy({ x: 700, y: 0 }));
   	
   	stage.insert(new Q.Ufo({ x: 900, y: 209 }));
   
@@ -345,9 +346,9 @@ Q.scene("level3", function(stage) {
     
     stage.add("viewport").follow(player);
     
-  //  stage.insert(new Q.Alien({ x: 300, y: 0 }));
- //   stage.insert(new Q.Alien({ x: 600, y: 0 }));
- //  stage.insert(new Q.Alien({ x: 700, y: 0 }));
+  stage.insert(new Q.Alien({ x: 300, y: 0 }));
+  stage.insert(new Q.Alien({ x: 600, y: 0 }));
+  stage.insert(new Q.Alien({ x: 700, y: 0 }));
   	
   	stage.insert(new Q.Portal({ x: 1000, y: 209 }));
   	
@@ -368,13 +369,13 @@ Q.scene("level4",function(stage) {
   var player = stage.insert(new Q.Player());
   
   stage.add("viewport").follow(player);
-// stage.insert(new Q.Fire({ x: 250, y: 200 }));
-// stage.insert(new Q.Fire({ x: 200, y: 0 }));
-// stage.insert(new Q.Fire({ x: 350, y: 0 }));
-// stage.insert(new Q.Fire({ x: 400, y: 0 }));
-// stage.insert(new Q.Fire({ x: 550, y: 0 }));
-// stage.insert(new Q.Fire({ x: 600, y: 0 }));
-// stage.insert(new Q.Fire({ x: 1200, y: 100}));
+ stage.insert(new Q.Fire({ x: 250, y: 200 }));
+ stage.insert(new Q.Fire({ x: 200, y: 0 }));
+ stage.insert(new Q.Fire({ x: 350, y: 0 }));
+ stage.insert(new Q.Fire({ x: 400, y: 0 }));
+ stage.insert(new Q.Fire({ x: 550, y: 0 }));
+ stage.insert(new Q.Fire({ x: 600, y: 0 }));
+ stage.insert(new Q.Fire({ x: 1200, y: 100}));
   stage.insert(new Q.Door({ x: 32, y: 43}));
 //  stage.insert(new Q.drumstick( { x: 875, y: 209}));
   
@@ -395,10 +396,20 @@ Q.scene("level5", function(stage) {
 	
 	stage.add("viewport").follow(player);
 	
-	// To do: insert enemies
-	// 		  insert collectables
-	// 		  design staging 
-	//        insert portal 
+	
+	stage.insert(new Q.drumstick( { x: 875, y: 80}));
+	
+	stage.insert(new Q.Door({ x: 130, y: 173}));
+	
+	stage.insert(new Q.Door({ x: 1600, y: 173}));
+	stage.insert(new Q.Door({ x: 350, y: 300}));
+	stage.insert(new Q.Door({ x: 870, y: 300}));
+	stage.insert(new Q.Door({ x: 1070, y: 300}));
+	stage.insert(new Q.Door({ x: 770, y: 500}));
+	// To do: 
+	//        insert portals 
+	// 		  connect portals
+	// 		  include collectables
 	
 }); 
 
