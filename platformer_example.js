@@ -124,6 +124,25 @@ Q.Sprite.extend("riceball", {
   }
 });
 
+Q.Sprite.extend("blue_Psyche", {
+	init: function(p) {
+    this._super(p, { sheet: 'bluePsyche' });
+  }
+});
+
+Q.Sprite.extend("green_Psyche", {
+	init: function(p) {
+    this._super(p, { sheet: 'greenPsyche' });
+  }
+});
+
+Q.Sprite.extend("red_Psyche", {
+	init: function(p) {
+    this._super(p, { sheet: 'redPsyche' });
+  }
+});
+
+
 // ## Enemy Sprite
 Q.Sprite.extend("Enemy",{
   init: function(p) {
@@ -296,7 +315,7 @@ Q.scene("level1",function(stage) {
   stage.add("viewport").follow(player);
  
   stage.insert(new Q.Tower({ x: 900, y: 209 }));
-  stage.insert(new Q.drumstick( { x: 875, y: 90}));
+  stage.insert(new Q.drumstick( { x: 870, y: 90}));
   
 });
 
@@ -368,7 +387,7 @@ Q.scene("level4",function(stage) {
 
   var player = stage.insert(new Q.Player());
   
-  stage.add("viewport").follow(player);
+ stage.add("viewport").follow(player);
  stage.insert(new Q.Fire({ x: 250, y: 200 }));
  stage.insert(new Q.Fire({ x: 200, y: 0 }));
  stage.insert(new Q.Fire({ x: 350, y: 0 }));
@@ -376,7 +395,7 @@ Q.scene("level4",function(stage) {
  stage.insert(new Q.Fire({ x: 550, y: 0 }));
  stage.insert(new Q.Fire({ x: 600, y: 0 }));
  stage.insert(new Q.Fire({ x: 1200, y: 100}));
-  stage.insert(new Q.Door({ x: 32, y: 43}));
+ stage.insert(new Q.Door({ x: 32, y: 43}));
 //  stage.insert(new Q.drumstick( { x: 875, y: 209}));
   
 });
@@ -399,13 +418,13 @@ Q.scene("level5", function(stage) {
 	
 	stage.insert(new Q.drumstick( { x: 875, y: 80}));
 	
-	stage.insert(new Q.Door({ x: 130, y: 173}));
+	stage.insert(new Q.blue_Psyche({ x: 130, y: 173}));
 	
-	stage.insert(new Q.Door({ x: 1600, y: 173}));
-	stage.insert(new Q.Door({ x: 350, y: 300}));
-	stage.insert(new Q.Door({ x: 870, y: 300}));
-	stage.insert(new Q.Door({ x: 1070, y: 300}));
-	stage.insert(new Q.Door({ x: 770, y: 500}));
+	stage.insert(new Q.red_Psyche({ x: 1600, y: 173}));
+	stage.insert(new Q.green_Psyche({ x: 350, y: 300}));
+	stage.insert(new Q.red_Psyche({ x: 870, y: 300}));
+	stage.insert(new Q.blue_Psyche({ x: 1070, y: 300}));
+	stage.insert(new Q.red_Psyche({ x: 770, y: 500}));
 	// To do: 
 	//        insert portals 
 	// 		  connect portals
@@ -639,7 +658,7 @@ Q.scene('mute', function(stage) {
 // Q.load can be called at any time to load additional assets
 // assets that are already loaded will be skipped
 // The callback will be triggered when everything is loaded
-Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.json, level8.json, level9.json, sprites.json, door.json, alien.json, riceball.json, collectables.json, ufo.json, fire.json, timmyanim.json, background-wall.png, background-wall2.png, background-wall3.png, background-wall4.png, background-wall5.png, background-wall6.png, background-wall7.png, tiles.png, tiles2.png, tiles3.png, tiles4.png, tiles5.png, tiles6.png, alien.png, portal.png, portal.json, timmyanim.png, fire.png, ufo.png, door.png, sprites.png, riceball.png, collectables.png, bite.wav, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3 ", function() {
+Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.json, level8.json, level9.json, sprites.json, door.json, alien.json, riceball.json, collectables.json, ufo.json, fire.json, timmyanim.json, psyches.json, background-wall.png, background-wall2.png, background-wall3.png, background-wall4.png, background-wall5.png, background-wall6.png, background-wall7.png, tiles.png, tiles2.png, tiles3.png, tiles4.png, tiles5.png, tiles6.png, alien.png, portal.png, portal.json, timmyanim.png, fire.png, ufo.png, door.png, sprites.png, riceball.png, collectables.png, psyches.png, bite.wav, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3 ", function() {
   // Sprites sheets created manually
   Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
   Q.sheet("tiles2", "tiles2.png", { tilew: 32, tileh: 32 });
@@ -647,6 +666,7 @@ Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.j
   Q.sheet("tiles4", "tiles4.png", { tilew: 32, tileh: 32});
   Q.sheet("tiles5", "tiles5.png", { tilew: 32, tileh: 32});
   Q.sheet("tiles6", "tiles6.png", { tilew: 32, tileh: 32});
+  
   
   //Sprite sheets from .json asset that define sprite locations
   Q.compileSheets("sprites.png","sprites.json");
@@ -658,6 +678,7 @@ Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.j
   Q.compileSheets("portal.png","portal.json");
   Q.compileSheets("collectables.png", "collectables.json");
   Q.compileSheets("timmyanim.png", "timmyanim.json");
+  Q.compileSheets("psyches.png", "psyches.json");
   
   Q.animations("Player", {
   	walk: { frames:[1, 2], rate: 1/15, loop: true},
@@ -674,7 +695,7 @@ Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.j
   
   Q.stageScene("hud", 3, {score: 0, lives : 3} );
   Q.stageScene("mute", 4);
-  Q.stageScene("level1");
+  Q.stageScene("level5");
 });
 
 
