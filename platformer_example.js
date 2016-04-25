@@ -607,6 +607,32 @@ Q.scene("level5", function(stage) {
 	});
 	
 }); 
+// Level 6 Developed by Tyler Rostenbach
+Q.scene("level6",function(stage) {
+	stage.insert(new Q.Repeater({ asset: "background-wallT.png", speedX: 0.5, speedY: 0.5 }))
+	stage.collisionLayer(new Q.TileLayer({
+					dataAsset: 'level6.json',
+					sheet:      'tilesT' }));
+					
+	var player = stage.insert(new Q.Player());
+	
+	stage.add("viewport").follow(player);
+	stage.insert(new Q.drumstick( {x: 630, y: 25}));
+	
+	stage.insert(new Q.Fire({ x: 400, y: 0 }));
+	stage.insert(new Q.Fire({ x: 630, y: 0 }));
+	stage.insert(new Q.Fire({ x: 800, y: 0 }));
+	stage.insert(new Q.Fire({ x: 900, y: 0 }));
+	stage.insert(new Q.Fire({ x: 950, y: 0 }));
+	
+	stage.insert(new Q.Fire({ x: 1100, y: 0 }));
+	stage.insert(new Q.Fire({ x: 1300, y: 0 }));
+	stage.insert(new Q.Fire({ x: 1400, y: 0 }));
+	stage.insert(new Q.Fire({ x: 1500, y: 0 }));
+	stage.insert(new Q.Fire({ x: 1550, y: 0 }));
+	
+	stage.insert(new Q.Portal({ x: 630, y: 140 }));
+});
 
 /**  ## Level7 scene developed by Jessica Evans */
 Q.scene("level7",function(stage) {
@@ -778,13 +804,13 @@ Q.scene('stageNextLevel', function(stage) {
   	 Q.stageScene("level5");
   	 }
 	 if (MY_LEVEL == 6){
-  	 Q.stageScene("level7");
+  	 Q.stageScene("level6");
   	 }
 	 if (MY_LEVEL == 7){
-  	 Q.stageScene("level8");
+  	 Q.stageScene("level7");
   	 }
 	 if (MY_LEVEL == 8){
-  	 Q.stageScene("level9");
+  	 Q.stageScene("level8");
   	 }
 	 if (MY_LEVEL == 9){
   	 Q.stageScene("level9");
@@ -864,7 +890,7 @@ Q.scene('mute', function(stage) {
 // Q.load can be called at any time to load additional assets
 // assets that are already loaded will be skipped
 // The callback will be triggered when everything is loaded */
-Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.json, level8.json, level9.json, sprites.json, door.json, alien.json, riceball.json, collectables.json, ufo.json, fire.json, timmyanim.json, psyches.json, background-wall.png, background-wall2.png, background-wall3.png, background-wall4.png, background-wall5.png, background-wall6.png, background-wall7.png, tiles.png, tiles2.png, tiles3.png, tiles4.png, tiles5.png, tiles6.png, alien.png, portal.png, portal.json, timmyanim.png, fire.png, ufo.png, door.png, sprites.png, riceball.png, collectables.png, psyches.png, title.png, bite.wav, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3, bark.wav, lalala.wav", function() {
+Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level6.json, level7.json, level8.json, level9.json, sprites.json, door.json, alien.json, riceball.json, collectables.json, ufo.json, fire.json, timmyanim.json, psyches.json, background-wall.png, background-wall2.png, background-wallT.png, tilesT.png, background-wall3.png, background-wall4.png, background-wall5.png, background-wall6.png, background-wall7.png, tiles.png, tiles2.png, tiles3.png, tiles4.png, tiles5.png, tiles6.png, alien.png, portal.png, portal.json, timmyanim.png, fire.png, ufo.png, door.png, sprites.png, riceball.png, collectables.png, psyches.png, title.png, bite.wav, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3, bark.wav, lalala.wav", function() {
   /**  Sprites sheets created manually */
   Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
   Q.sheet("tiles2", "tiles2.png", { tilew: 32, tileh: 32 });
@@ -872,6 +898,7 @@ Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.j
   Q.sheet("tiles4", "tiles4.png", { tilew: 32, tileh: 32});
   Q.sheet("tiles5", "tiles5.png", { tilew: 32, tileh: 32});
   Q.sheet("tiles6", "tiles6.png", { tilew: 32, tileh: 32});
+  Q.sheet("tilesT", "tilesT.png", { tilew: 32, tileh: 32});
   
   
   /** Sprite sheets from .json asset that define sprite locations */
