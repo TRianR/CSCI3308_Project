@@ -19,7 +19,7 @@ var Q = window.Q = Quintus({audioSupported: [ 'wav','mp3','ogg' ]})
 var MY_SCORE = 0;
 
 /** Global variable that keeps track of user lives */  
-var MY_LIVES = 3;
+var MY_LIVES = 300;
 
 /** Global variable that keeps track of user level */  
 var MY_LEVEL = 1; 
