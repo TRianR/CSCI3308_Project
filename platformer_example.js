@@ -883,9 +883,9 @@ Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.j
     //alien.render(Q.ctx);
   //});
   
-  Q.stageScene("level1");
+  Q.stageScene("titlescreen", 0);
   Q.stageScene("hud", 3, {score: 0, lives : 3} );
-  Q.stageScene("mute", 4);
+  Q.stageScene("mute", 2);
   
 });
 
