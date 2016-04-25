@@ -81,6 +81,12 @@ Q.Sprite.extend("Player",{
 		Q.stageScene("stageNextLevel", 1, {buttontext : "Huweeeee", label: "When will it be over??" });  
         this.destroy();
       }
+      else if(collision.obj.isA("House")) {
+	    /** Timmy going down well sound -> 'well.mp3/.wav/.ogg' */
+		Q.audio.play('well.mp3');
+		Q.stageScene("titlescreen", 0, {buttontext : "You beat the game!", label: "Play again" });  
+        this.destroy();
+      }
     });
   },
   
@@ -104,6 +110,13 @@ Q.Sprite.extend("Player",{
 Q.Sprite.extend("Tower", {
   init: function(p) {
     this._super(p, { sheet: 'tower' });
+  }
+});
+
+/** ## Timmy's house sprite */
+Q.Sprite.extend("House", {
+  init: function(p) {
+    this._super(p, { sheet: 'house' });
   }
 });
 
@@ -429,7 +442,7 @@ Q.scene("level3", function(stage) {
   	
 });
 
-/** ## Level4 scene */
+/** ## Level4 scene by Tyler Glotz */
 Q.scene("level4",function(stage) {
 
   /** Add in a repeater for a little parallax action */
@@ -607,7 +620,7 @@ Q.scene("level5", function(stage) {
 	});
 	
 }); 
-// Level 6 Developed by Tyler Rostenbach
+/** Level 6 Developed by Tyler Rostenbach */
 Q.scene("level6",function(stage) {
 	stage.insert(new Q.Repeater({ asset: "background-wallT.png", speedX: 0.5, speedY: 0.5 }))
 	stage.collisionLayer(new Q.TileLayer({
@@ -725,6 +738,29 @@ Q.scene("level9",function(stage) {
   stage.insert(new Q.Enemy({ x: 300, y: 365 }));
   stage.insert(new Q.Enemy({ x: 400, y: 365 }));
 });
+Q.scene("level10",function(stage) {
+
+  /** Add in a repeater for a little parallax action */
+  stage.insert(new Q.Repeater({ asset: "background-wall.png", speedX: 0.5, speedY: 0.5 }));
+  /** Add in a tile layer, and make it the collision layer */
+  stage.collisionLayer(new Q.TileLayer({
+                             dataAsset: 'level10.json',
+                             sheet:     'tiles' }));
+  stage.insert(new Q.UI.Text({ 
+      label: "You did it!! You got Timmy back home!",
+      color: "white",
+      x: 500,
+      y: 309,
+    }));
+
+  var player = stage.insert(new Q.Player());
+  
+  stage.add("viewport").follow(player);
+ 
+  stage.insert(new Q.House({ x: 1000, y: 227 }));
+  stage.insert(new Q.drumstick( { x: 850, y: 90}));
+  
+});
 
 
 /** To display a game over / game won popup box, 
@@ -815,6 +851,9 @@ Q.scene('stageNextLevel', function(stage) {
 	 if (MY_LEVEL == 9){
   	 Q.stageScene("level9");
   	 }
+  	 if (MY_LEVEL == 10){
+	 Q.stageScene("level10");
+     }
    });
    
    container.fit(20);
@@ -824,7 +863,8 @@ Q.scene('stageNextLevel', function(stage) {
 Q.scene('titlescreen', function(stage) { 
 	stage.insert(new Q.Repeater({ asset: "title.png"}));
 	Q.audio.play('lalala.wav');
-	
+		Q.audio.stop('Music.mp3');
+
 	var container = stage.insert(new Q.UI.Container({
     	x: Q.width/2, y: (Q.height/2)+50, fill: "rgba(255,255,255,0.75)"
   	}));
@@ -890,7 +930,7 @@ Q.scene('mute', function(stage) {
 // Q.load can be called at any time to load additional assets
 // assets that are already loaded will be skipped
 // The callback will be triggered when everything is loaded */
-Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level6.json, level7.json, level8.json, level9.json, sprites.json, door.json, alien.json, riceball.json, collectables.json, ufo.json, fire.json, timmyanim.json, psyches.json, background-wall.png, background-wall2.png, background-wallT.png, tilesT.png, background-wall3.png, background-wall4.png, background-wall5.png, background-wall6.png, background-wall7.png, tiles.png, tiles2.png, tiles3.png, tiles4.png, tiles5.png, tiles6.png, alien.png, portal.png, portal.json, timmyanim.png, fire.png, ufo.png, door.png, sprites.png, riceball.png, collectables.png, psyches.png, title.png, bite.wav, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3, bark.wav, lalala.wav", function() {
+Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level6.json, level7.json, level8.json, level9.json, level10.json, house.png, house.json, sprites.json, door.json, alien.json, riceball.json, collectables.json, ufo.json, fire.json, timmyanim.json, psyches.json, background-wall.png, background-wall2.png, background-wallT.png, tilesT.png, background-wall3.png, background-wall4.png, background-wall5.png, background-wall6.png, background-wall7.png, tiles.png, tiles2.png, tiles3.png, tiles4.png, tiles5.png, tiles6.png, alien.png, portal.png, portal.json, timmyanim.png, fire.png, ufo.png, door.png, sprites.png, riceball.png, collectables.png, psyches.png, title.png, bite.wav, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3, bark.wav, lalala.wav", function() {
   /**  Sprites sheets created manually */
   Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
   Q.sheet("tiles2", "tiles2.png", { tilew: 32, tileh: 32 });
@@ -912,6 +952,7 @@ Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level6.j
   Q.compileSheets("collectables.png", "collectables.json");
   Q.compileSheets("timmyanim.png", "timmyanim.json");
   Q.compileSheets("psyches.png", "psyches.json");
+  Q.compileSheets("house.png", "house.json");
   
   Q.animations("Player", {
   	walk: { frames:[1, 2], rate: 1/15, loop: true},
