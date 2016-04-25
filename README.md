@@ -13,6 +13,16 @@ The website will also include a forum and a scoreboard.
 
 ###Vision Statement 
 * We are making a dynamic game with a rich user experience that is entertaining and fun. 
+* 
+###Repository Organization
+* Main code in master
+* Data and assets in audio, data, and images folders
+* Documentation in out folder
+* 
+###How To Run
+* Go to http://trianr.github.io/CSCI3308_Project/
+* Or clone repository, cd into directory, run a local server, and open TLDHomepage.HTML in browser
+* If this doesn't work, try a different browser
 
 ###Motivation:
 * To gain experience in web design, web app design, and game design while focusing on a project that is entertaining to us as developers as well as users. 
