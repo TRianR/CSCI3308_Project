@@ -1,1 +1,1 @@
-{"drumstick":{"sx":0,"sy":0,"cols":1,"tilew":32,"tileh":32,"frames":1}}
+{"drumstick":{"sx":0,"sy":0,"cols":1,"tilew":25,"tileh":26,"frames":1}, "doggy":{"sx":26,"sy":0,"cols":1,"tilew":22,"tileh":19,"frames":1}, "candy":{"sx":48,"sy":0,"cols":1,"tilew":17,"tileh":16,"frames":1}}
