@@ -1,14 +1,14 @@
-// # Timmy's Lost Dimension Platformer with Quintus Engine
+/** # Timmy's Lost Dimension Platformer with Quintus Engine
 //
 // [Run the example](../quintus/examples/platformer/index.html)
 // WARNING: this game must be run from a non-file:// url
-// as it loads a level json file.
+// as it loads a level json file. */
 
 
 window.addEventListener("load",function() {
 
-// Set up an instance of the Quintus engine  and include
-// the Sprites, Scenes, Input and 2D module
+/** Set up an instance of the Quintus engine  and include
+// the Sprites, Scenes, Input and 2D module */
 var Q = window.Q = Quintus({audioSupported: [ 'wav','mp3','ogg' ]})
         .include("Sprites, Scenes, Input, 2D, Anim, Touch, UI, Audio")
         .setup('quintusContainer')
@@ -24,16 +24,17 @@ var MY_LIVES = 3;
 /** Global variable that keeps track of user level */  
 var MY_LEVEL = 1; 
  
-// ## Player Sprite
+/** ## Player Sprite */
 Q.Sprite.extend("Player",{
 
-  // the init constructor is called on creation
+  /** the init constructor is called on creation */
   init: function(p) {
 
-    // You can call the parent's constructor with this._super(..)
+    /** You can call the parent's constructor with this._super(..) */
     this._super(p, {
-      //sprite "player_anim",
-      sheet: "player_anim", // Setting a sprite sheet sets sprite width and height
+      /** sprite "player_anim", */
+      sheet: "player_anim", 
+      /**Setting a sprite sheet sets sprite width and height */
  	  x: 410,           
       y: 90             
     });
@@ -45,37 +46,37 @@ Q.Sprite.extend("Player",{
     this.on("hit.sprite",function(collision) {
 
       if(collision.obj.isA("Tower")) {
-		// Timmy going down well sound -> 'well.mp3/.wav/.ogg'
+		/** Timmy going down well sound -> 'well.mp3/.wav/.ogg' */
 		Q.audio.play('well.mp3');
        Q.stageScene("stageNextLevel", 1, {buttontext : "Oh me oh my", label: "Timmy fell down the well!" }); 
         this.destroy();
       }
       else if(collision.obj.isA("Ufo")) {
-	    // Timmy going down well sound -> 'well.mp3/.wav/.ogg'
+	    /**  Timmy going down well sound -> 'well.mp3/.wav/.ogg' */
 		Q.audio.play('well.mp3');
        Q.stageScene("stageNextLevel", 1, {buttontext : "Mom...MOM!!!", label: "Where to now?" }); 
         this.destroy();
       }
        else if(collision.obj.isA("Portal")) {
-	    // Timmy going down well sound -> 'well.mp3/.wav/.ogg'
+	    /**  Timmy going down well sound -> 'well.mp3/.wav/.ogg' */
 		Q.audio.play('well.mp3'); 
         Q.stageScene("stageNextLevel", 1, {buttontext : "Huzzah!", label: "On the the next dimension!!" }); 
         this.destroy();
       }
       else if(collision.obj.isA("Door")) {
-	    // Timmy going down well sound -> 'well.mp3/.wav/.ogg'
+	    /** Timmy going down well sound -> 'well.mp3/.wav/.ogg' */
 		Q.audio.play('well.mp3');
 		Q.stageScene("stageNextLevel", 1, {buttontext : "Huh?", label: "Rubber Baby Buggy Bumper Rager!!!" });  
         this.destroy();
       }
 	  else if(collision.obj.isA("riceball")) {
-	    // Timmy going down well sound -> 'well.mp3/.wav/.ogg'
+	    /** Timmy going down well sound -> 'well.mp3/.wav/.ogg' */
 		Q.audio.play('well.mp3');
 		Q.stageScene("stageNextLevel", 1, {buttontext : "I think I have a stomach ache!", label: "Yummy" });  
         this.destroy();
       }
       else if(collision.obj.isA("green_Psyche")) {
-	    // Timmy going down well sound -> 'well.mp3/.wav/.ogg'
+	    /** Timmy going down well sound -> 'well.mp3/.wav/.ogg' */
 		Q.audio.play('well.mp3');
 		Q.stageScene("stageNextLevel", 1, {buttontext : "Huweeeee", label: "When will it be over??" });  
         this.destroy();
@@ -99,14 +100,14 @@ Q.Sprite.extend("Player",{
 
 });
 
-// ## Tower Sprite
+/** ## Tower Sprite */
 Q.Sprite.extend("Tower", {
   init: function(p) {
     this._super(p, { sheet: 'tower' });
   }
 });
 
-// ## Portal Sprite
+/** ## Portal Sprite */
 Q.Sprite.extend("Portal", {
   init: function(p) {
     this._super(p, { sheet: 'portal' });
@@ -114,21 +115,21 @@ Q.Sprite.extend("Portal", {
   }
 });
 
-// ## Ufo sprite
+/** ## Ufo sprite */
 Q.Sprite.extend("Ufo", {
   init: function(p) {
     this._super(p, { sheet: 'ufo' });
     asset: "ufo.png";
   }
 });
-// ## Door sprite
+/** ## Door sprite */
 Q.Sprite.extend("Door", {
   init: function(p) {
     this._super(p, { sheet: 'door' });
     asset: "door.png";
   }
 });
-// ## riceball sprite
+/** ## riceball sprite */
 Q.Sprite.extend("riceball", {
   init: function(p) {
     this._super(p, { sheet: 'riceball' });
@@ -155,21 +156,21 @@ Q.Sprite.extend("red_Psyche", {
 });
 
 
-// ## Enemy Sprite
+/** ## Enemy Sprite */
 Q.Sprite.extend("Enemy",{
   init: function(p) {
     this._super(p, { sheet: 'enemy', vx: 100 });
 
     this.add('2d, aiBounce');
 
-    // Listen for a sprite collision, if it's the player,
-    // end the game unless the enemy is hit on top
+    /** Listen for a sprite collision, if it's the player,
+    // end the game unless the enemy is hit on top */
     this.on("bump.left,bump.right,bump.bottom",function(collision) {
       if(collision.obj.isA("Player")) { 
-		  // Play hurt audio
+		  /** Play hurt audio */
 		  Q.audio.play('Hit_Hurt.mp3');
       	if(MY_LIVES <= 0) {
-		// Stops music and all sounds upon game ending
+		/** Stops music and all sounds upon game ending */
 		Q.audio.stop();
 		MY_LEVEL = 1;
       	Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES})
@@ -183,15 +184,15 @@ Q.Sprite.extend("Enemy",{
       }
     });
 
-    // If the enemy gets hit on the top, destroy it
-    // and give the user a "hop"
+    /** If the enemy gets hit on the top, destroy it
+    // and give the user a "hop" */
     this.on("bump.top",function(collision) {
       if(collision.obj.isA("Player")) { 
         this.destroy();
         collision.obj.p.vy = -300;
         MY_SCORE += 10
         
-        // play jump audio when landing ontop of enemy
+        /** play jump audio when landing ontop of enemy */
         Q.audio.play('Jump.mp3');
         
        Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES});
@@ -199,21 +200,21 @@ Q.Sprite.extend("Enemy",{
     });
   }
 });
-// ## Fire Sprite
+/** ## Fire Sprite */
 Q.Sprite.extend("Fire",{
   init: function(p) {
     this._super(p, { sheet: 'fire', vx: 100 });
 
     this.add('2d, aiBounce');
 
-    // Listen for a sprite collision, if it's the player,
-    // end the game unless the enemy is hit on top
+    /** Listen for a sprite collision, if it's the player,
+    // end the game unless the enemy is hit on top */
     this.on("bump.left,bump.right,bump.bottom",function(collision) {
       if(collision.obj.isA("Player")) { 
-		  // Play hurt audio
+		  /** Play hurt audio */
 		  Q.audio.play('Hit_Hurt.mp3');
       	if(MY_LIVES <= 0) {
-		// Stops music and all sounds upon game ending
+		/** Stops music and all sounds upon game ending */
 		Q.audio.stop();
 		MY_LEVEL = 1;
       	Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES})
@@ -227,15 +228,15 @@ Q.Sprite.extend("Fire",{
       }
     });
 
-    // If the enemy gets hit on the top, destroy it
-    // and give the user a "hop"
+    /** If the enemy gets hit on the top, destroy it
+    // and give the user a "hop" */
     this.on("bump.top",function(collision) {
       if(collision.obj.isA("Player")) { 
         this.destroy();
         collision.obj.p.vy = -300;
         MY_SCORE += 10
         
-        // play jump audio when landing ontop of enemy
+        /** play jump audio when landing ontop of enemy */
         Q.audio.play('Jump.mp3');
         
        Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES});
@@ -243,21 +244,21 @@ Q.Sprite.extend("Fire",{
     });
   }
 });
-//Adding alien sprites to level
+/** Adding alien sprites to level */
 Q.Sprite.extend("Alien", {
   init: function(p) {
     this._super(p, { sheet: 'alien', vx: 100 });
     this.add("2d, aiBounce");
       asset: "alien.png"
       
-      // Listen for a sprite collision, if it's the player,
-    // end the game unless the enemy is hit on top
+      /** Listen for a sprite collision, if it's the player,
+    // end the game unless the enemy is hit on top */
     this.on("bump.left,bump.right,bump.bottom",function(collision) {
       if(collision.obj.isA("Player")) { 
-		  // Play hurt audio
+		  /** Play hurt audio */
 		  Q.audio.play('Hit_Hurt.mp3');
       	if(MY_LIVES <= 0) {
-		// Stops music and all sounds upon game ending
+		/** Stops music and all sounds upon game ending */
 		Q.audio.stop();
 			
       	Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES})
@@ -272,15 +273,15 @@ Q.Sprite.extend("Alien", {
       }
     });
     
-    // If the enemy gets hit on the top, destroy it
-    // and give the user a "hop"
+    /** If the enemy gets hit on the top, destroy it
+    // and give the user a "hop" */
     this.on("bump.top",function(collision) {
       if(collision.obj.isA("Player")) { 
         this.destroy();
         collision.obj.p.vy = -300;
         MY_SCORE += 10
         
-        // play jump audio when landing ontop of enemy
+        /** play jump audio when landing ontop of enemy */
         Q.audio.play('Jump.mp3');
         
        Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES});
@@ -290,7 +291,7 @@ Q.Sprite.extend("Alien", {
     }  
  });
  
- //Drumstick collectable. Worth 10 points. 
+ /** Drumstick collectable. Worth 10 points.  */
  Q.Sprite.extend("drumstick", {
  	init: function(p) {
  		this._super(p, { sheet : "drumstick" }); 
@@ -301,7 +302,7 @@ Q.Sprite.extend("Alien", {
         this.destroy();
         MY_SCORE += 10
         
-        // play eat audio when gathering
+        /** play eat audio when gathering */
         Q.audio.play('bite.wav');
         
        Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES});
@@ -311,7 +312,7 @@ Q.Sprite.extend("Alien", {
  	}
  });
  
-//Find lost dog! Collectable. Worth 100 points. (Super special).
+/**Find lost dog! Collectable. Worth 100 points. (Super special). */
   Q.Sprite.extend("doggy", {
  	init: function(p) {
  		this._super(p, { sheet : "doggy" }); 
@@ -331,7 +332,7 @@ Q.Sprite.extend("Alien", {
  	}
  });
  
- //Candy collectable. Worth 10 points. 
+ /** Candy collectable. Worth 10 points.  */
   Q.Sprite.extend("candy", {
  	init: function(p) {
  		this._super(p, { sheet : "candy" }); 
@@ -342,7 +343,7 @@ Q.Sprite.extend("Alien", {
         this.destroy();
         MY_SCORE += 10
         
-        // play eat audio when gathering
+        /** play eat audio when gathering */
         Q.audio.play('bite.wav');
         
        Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES});
@@ -352,14 +353,14 @@ Q.Sprite.extend("Alien", {
  	}
  });
  		
-// ## Level1 scene
+/** ## Level1 scene */
 Q.scene("level1",function(stage) {
 
-  // Add in a repeater for a little parallax action
+  /** Add in a repeater for a little parallax action */
   stage.insert(new Q.Repeater({ asset: "background-wall.png", speedX: 0.5, speedY: 0.5 }));
-  // start music
+  /** start music */
 	Q.audio.play('Music.mp3',{ loop: true });
-  // Add in a tile layer, and make it the collision layer
+  /** Add in a tile layer, and make it the collision layer */
   stage.collisionLayer(new Q.TileLayer({
                              dataAsset: 'level.json',
                              sheet:     'tiles' }));
@@ -373,7 +374,7 @@ Q.scene("level1",function(stage) {
   
 });
 
-// ## Level2 scene
+/** ## Level2 scene */
 Q.scene("level2", function(stage) { 
 	stage.insert(new Q.Repeater({ asset: "background-wall2.png", speedX: 0.5, speedY: 0.5 }))
 	
@@ -400,7 +401,7 @@ Q.scene("level2", function(stage) {
   	
 });
 
-// ## Level3 scene
+/** ## Level3 scene */
 Q.scene("level3", function(stage) { 
 	stage.insert(new Q.Repeater({ asset: "background-wall3.png", speedX: 0.5, speedY: 0.5 }))
 	
@@ -428,13 +429,13 @@ Q.scene("level3", function(stage) {
   	
 });
 
-// ## Level4 scene
+/** ## Level4 scene */
 Q.scene("level4",function(stage) {
 
-  // Add in a repeater for a little parallax action
+  /** Add in a repeater for a little parallax action */
   stage.insert(new Q.Repeater({ asset: "background-wall4.png", speedX: 0.5, speedY: 0.5 }));
 
-  // Add in a tile layer, and make it the collision layer
+  /** Add in a tile layer, and make it the collision layer */
   stage.collisionLayer(new Q.TileLayer({
                              dataAsset: 'level4.json',
                              sheet:     'tiles4' }));
@@ -450,14 +451,14 @@ Q.scene("level4",function(stage) {
  stage.insert(new Q.Fire({ x: 600, y: 0 }));
  stage.insert(new Q.Fire({ x: 1200, y: 100}));
  stage.insert(new Q.Door({ x: 32, y: 43}));
-//  stage.insert(new Q.drumstick( { x: 875, y: 209}));
+/**  stage.insert(new Q.drumstick( { x: 875, y: 209})); */
   
 });
 
 
-// Level 5 
+/** Level 5 
 // Developed by Meri 
-// Psychedelic theme -- puzzle based 
+// Psychedelic theme -- puzzle based  */
 Q.scene("level5", function(stage) { 
 	stage.insert(new Q.Repeater( { asset: "background-wall5.png", speedX: 0.5, speedY: 0.5})); 
 	
@@ -472,9 +473,9 @@ Q.scene("level5", function(stage) {
 	var section = 1;
 	var redCheck = 0; 
 	
-	//Rubber Baby Buggy Bumper Rager!!! == Clue for order of psyches to follow (Red-Blue-Blue-Blue-Red-Blue/Redx3->Blue)
+	/**Rubber Baby Buggy Bumper Rager!!! == Clue for order of psyches to follow (Red-Blue-Blue-Blue-Red-Blue/Redx3->Blue) */
 	
-	//Section 1 
+	/** Section 1  */
 	stage.insert(new Q.red_Psyche({ x: 130, y: 173}));
 	stage.insert(new Q.blue_Psyche({ x: 1560, y: 173}));
 	stage.insert(new Q.drumstick( { x: 475, y: 120}));
@@ -486,13 +487,13 @@ Q.scene("level5", function(stage) {
 	stage.insert(new Q.drumstick( { x: 1275, y: 120}));
 	stage.insert(new Q.candy( { x: 1425, y: 120}));
 	
-	// Section 2 
+	/** Section 2  */
 	stage.insert(new Q.blue_Psyche({ x: 350, y: 300}));
 	stage.insert(new Q.red_Psyche({ x: 870, y: 300}));
 	stage.insert(new Q.drumstick( { x: 500, y: 270}));
 	stage.insert(new Q.drumstick( { x: 725, y: 270}));
 	
-	//Section 3
+	/**Section 3 */
 	stage.insert(new Q.blue_Psyche({ x: 1070, y: 300}));
 	stage.insert(new Q.red_Psyche({ x: 1800, y: 490})); 
 	stage.insert(new Q.candy( { x: 1850, y: 480}));
@@ -504,18 +505,18 @@ Q.scene("level5", function(stage) {
 	stage.insert(new Q.candy( { x: 2150, y: 480}));
 	stage.insert(new Q.candy( { x: 2200, y: 480}));
 	
-	//Section 4 
+	/** Section 4  */
 	stage.insert(new Q.blue_Psyche({ x:1900, y:175 }));
 	stage.insert(new Q.red_Psyche({ x: 1785, y:175 }));
 	
-	//Section 5
+	/** Section 5 */
 	stage.insert(new Q.blue_Psyche({ x: 48, y: 400 }));
 	stage.insert(new Q.red_Psyche({ x: 630, y: 495 }));
 	stage.insert(new Q.drumstick( { x: 60, y: 450}));
 	stage.insert(new Q.drumstick( { x: 125, y: 480}));
 	stage.insert(new Q.candy( { x: 350, y: 450}));
 	
-	//Section 6
+	/** Section 6 */
 	stage.insert(new Q.blue_Psyche({ x: 945, y: 495 }));
 	stage.insert(new Q.red_Psyche({ x: 1584, y: 496 }));
 	stage.insert(new Q.drumstick( { x: 1145, y: 480}));
@@ -526,11 +527,11 @@ Q.scene("level5", function(stage) {
 	stage.insert(new Q.candy( { x: 1530, y: 450}));
 	stage.insert(new Q.candy( { x: 1560, y: 450}));
 	
-	//Section 7 (secret)
+	/** Section 7 (secret) */
 	stage.insert(new Q.blue_Psyche({ x: 2075, y: 75 }));
 	stage.insert(new Q.doggy( { x: 2175, y: 75}));
 	
-	//Psyche to level 6
+	/** Psyche to level 6 */
 	stage.insert(new Q.green_Psyche({ x: 800, y: 400}));
 	
 	player.on("hit.sprite",function(collision) {
@@ -607,13 +608,13 @@ Q.scene("level5", function(stage) {
 	
 }); 
 
-// ## Level7 scene developed by Jessica Evans
+/**  ## Level7 scene developed by Jessica Evans */
 Q.scene("level7",function(stage) {
 
-  // Add in a repeater for a little parallax action
+  /** Add in a repeater for a little parallax action */
   stage.insert(new Q.Repeater({ asset: "background-wall6.png", speedX: 0.5, speedY: 0.5 }));
 
-  // Add in a tile layer, and make it the collision layer
+  /**  Add in a tile layer, and make it the collision layer */ 
   stage.collisionLayer(new Q.TileLayer({
                              dataAsset: 'level7.json',
                              sheet:     'tiles2' }));
@@ -642,13 +643,13 @@ Q.scene("level7",function(stage) {
   
 });
 
-// ## Level8 scene developed by Jessica Evans
+/** ## Level8 scene developed by Jessica Evans */
 Q.scene("level8",function(stage) {
 
-  // Add in a repeater for a little parallax action
+  /** Add in a repeater for a little parallax action */
   stage.insert(new Q.Repeater({ asset: "background-wall7.png", speedX: 0.5, speedY: 0.5 }));
 
-  // Add in a tile layer, and make it the collision layer
+  /** Add in a tile layer, and make it the collision layer */
   stage.collisionLayer(new Q.TileLayer({
                              dataAsset: 'level8.json',
                              sheet:     'tiles6' }));
@@ -671,13 +672,13 @@ Q.scene("level8",function(stage) {
  
 });
 
-// ## Level9 scene developed by Jessica Evans
+/** ## Level9 scene developed by Jessica Evans */
 Q.scene("level9",function(stage) {
 
-  // Add in a repeater for a little parallax action
+  /** Add in a repeater for a little parallax action */
   stage.insert(new Q.Repeater({ asset: "background-wall4.png", speedX: 0.5, speedY: 0.5 }));
 
-  // Add in a tile layer, and make it the collision layer
+  /** Add in a tile layer, and make it the collision layer */
   stage.collisionLayer(new Q.TileLayer({
                              dataAsset: 'level9.json',
                              sheet:     'tiles4' }));
@@ -700,15 +701,15 @@ Q.scene("level9",function(stage) {
 });
 
 
-// To display a game over / game won popup box, 
+/** To display a game over / game won popup box, 
 // create a endGame scene that takes in a `label` option
-// to control the displayed message.
+// to control the displayed message. */
 Q.scene('endGame',function(stage) {
   var container = stage.insert(new Q.UI.Container({
     x: Q.width/2, y: Q.height/2, fill: "rgba(0,0,0,0.5)"
   }));
   
-	// Play sound for when Timmy dies -> 'death.mp3/.wav/.ogg'
+	/** Play sound for when Timmy dies -> 'death.mp3/.wav/.ogg' */
 	Q.audio.play('death.mp3');
 
   var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC",
@@ -725,8 +726,8 @@ Q.scene('endGame',function(stage) {
     Q.stageScene('level1');
   });
 
-  // Expand the container to visibily fit it's contents
-  // (with a padding of 20 pixels)
+  /** Expand the container to visibily fit it's contents
+  // (with a padding of 20 pixels) */
   container.fit(20);
 });
 Q.scene('stageFirstLevel', function(stage) { 
@@ -859,12 +860,12 @@ Q.scene('mute', function(stage) {
  });
  
 
-// ## Asset Loading and Game Launch
+/** ## Asset Loading and Game Launch
 // Q.load can be called at any time to load additional assets
 // assets that are already loaded will be skipped
-// The callback will be triggered when everything is loaded
+// The callback will be triggered when everything is loaded */
 Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.json, level8.json, level9.json, sprites.json, door.json, alien.json, riceball.json, collectables.json, ufo.json, fire.json, timmyanim.json, psyches.json, background-wall.png, background-wall2.png, background-wall3.png, background-wall4.png, background-wall5.png, background-wall6.png, background-wall7.png, tiles.png, tiles2.png, tiles3.png, tiles4.png, tiles5.png, tiles6.png, alien.png, portal.png, portal.json, timmyanim.png, fire.png, ufo.png, door.png, sprites.png, riceball.png, collectables.png, psyches.png, title.png, bite.wav, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3, bark.wav, lalala.wav", function() {
-  // Sprites sheets created manually
+  /**  Sprites sheets created manually */
   Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
   Q.sheet("tiles2", "tiles2.png", { tilew: 32, tileh: 32 });
   Q.sheet("tiles3", "tiles3.png", { tilew: 32, tileh: 32 });
@@ -873,7 +874,7 @@ Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.j
   Q.sheet("tiles6", "tiles6.png", { tilew: 32, tileh: 32});
   
   
-  //Sprite sheets from .json asset that define sprite locations
+  /** Sprite sheets from .json asset that define sprite locations */
   Q.compileSheets("sprites.png","sprites.json");
   Q.compileSheets("alien.png","alien.json");
   Q.compileSheets("door.png","door.json");
