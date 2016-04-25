@@ -4,6 +4,7 @@
 // WARNING: this game must be run from a non-file:// url
 // as it loads a level json file.
 
+
 window.addEventListener("load",function() {
 
 // Set up an instance of the Quintus engine  and include
@@ -14,8 +15,13 @@ var Q = window.Q = Quintus({audioSupported: [ 'wav','mp3','ogg' ]})
         .controls().touch()
         .enableSound();
         
+/** Global variable that keeps track of user score */        
 var MY_SCORE = 0;
+
+/** Global variable that keeps track of user lives */  
 var MY_LIVES = 3;
+
+/** Global variable that keeps track of user level */  
 var MY_LEVEL = 1; 
  
 // ## Player Sprite
@@ -771,13 +777,13 @@ Q.scene('stageNextLevel', function(stage) {
   	 Q.stageScene("level5");
   	 }
 	 if (MY_LEVEL == 6){
-  	 Q.stageScene("level6");
-  	 }
-	 if (MY_LEVEL == 7){
   	 Q.stageScene("level7");
   	 }
-	 if (MY_LEVEL == 8){
+	 if (MY_LEVEL == 7){
   	 Q.stageScene("level8");
+  	 }
+	 if (MY_LEVEL == 8){
+  	 Q.stageScene("level9");
   	 }
 	 if (MY_LEVEL == 9){
   	 Q.stageScene("level9");
@@ -824,7 +830,6 @@ Q.scene('hud', function(stage) {
     container.fit(20);
     
  });
-
 
 Q.scene('mute', function(stage) {
    var container = stage.insert(new Q.UI.Container({
@@ -884,13 +889,7 @@ Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.j
   	jump: { frames: [3], rate: 1/10},
   	hurt: { frames: [4], rate: 1/10, loop: false }
   });
-  //var alien = new Q.Alien(); 
-  //Q.gameLoop(function(dt) {
-    //Q.clear();
-    //alien.update(dt);
-    //alien.render(Q.ctx);
-  //});
-  
+
   Q.stageScene("titlescreen", 0);
   Q.stageScene("hud", 3, {score: 0, lives : 3} );
   Q.stageScene("mute", 2);
