@@ -788,6 +788,27 @@ Q.scene('stageNextLevel', function(stage) {
   	
 }); 
 
+Q.scene('titlescreen', function(stage) { 
+	stage.insert(new Q.Repeater({ asset: "title.png"}));
+	
+	var container = stage.insert(new Q.UI.Container({
+    	x: Q.width/2, y: (Q.height/2)+50, fill: "rgba(255,255,255,0.75)"
+  	}));
+	
+	var button = container.insert(new Q.UI.Button({ x: 10, y: 50, fill: "#CCCCCC",
+                                                  label: "Play Game" })) ;
+                                                  
+    var label = container.insert(new Q.UI.Text({ x: 0, y: 0, fill: "#CCCCCC",
+                                                  label: "What happened next you'll never believe..." }));
+                                                  
+     button.on("click",function() {
+     	Q.stageScene("level1");
+     	Q.clear(1);
+     });
+     
+      container.fit(20);
+});
+
 Q.scene('hud', function(stage) {
 	var container = stage.insert(new Q.UI.Container({
 		x : 100,
@@ -812,7 +833,7 @@ Q.scene('mute', function(stage) {
 		}));
 	
    var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC",
-                                                  label: "Mute" })) 
+                                                  label: "Mute" })); 
     
    button.on("click",function() {
    	Q.audio.stop();
@@ -827,7 +848,7 @@ Q.scene('mute', function(stage) {
 // Q.load can be called at any time to load additional assets
 // assets that are already loaded will be skipped
 // The callback will be triggered when everything is loaded
-Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.json, level8.json, level9.json, sprites.json, door.json, alien.json, riceball.json, collectables.json, ufo.json, fire.json, timmyanim.json, psyches.json, background-wall.png, background-wall2.png, background-wall3.png, background-wall4.png, background-wall5.png, background-wall6.png, background-wall7.png, tiles.png, tiles2.png, tiles3.png, tiles4.png, tiles5.png, tiles6.png, alien.png, portal.png, portal.json, timmyanim.png, fire.png, ufo.png, door.png, sprites.png, riceball.png, collectables.png, psyches.png, bite.wav, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3, bark.wav", function() {
+Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.json, level8.json, level9.json, sprites.json, door.json, alien.json, riceball.json, collectables.json, ufo.json, fire.json, timmyanim.json, psyches.json, background-wall.png, background-wall2.png, background-wall3.png, background-wall4.png, background-wall5.png, background-wall6.png, background-wall7.png, tiles.png, tiles2.png, tiles3.png, tiles4.png, tiles5.png, tiles6.png, alien.png, portal.png, portal.json, timmyanim.png, fire.png, ufo.png, door.png, sprites.png, riceball.png, collectables.png, psyches.png, title.png, bite.wav, Hit_Hurt.mp3, Jump.mp3, Music.mp3, well.mp3, death.mp3, bark.wav", function() {
   // Sprites sheets created manually
   Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
   Q.sheet("tiles2", "tiles2.png", { tilew: 32, tileh: 32 });
@@ -862,9 +883,10 @@ Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level7.j
     //alien.render(Q.ctx);
   //});
   
+  Q.stageScene("level1");
   Q.stageScene("hud", 3, {score: 0, lives : 3} );
   Q.stageScene("mute", 4);
-  Q.stageScene("level1");
+  
 });
 
 
