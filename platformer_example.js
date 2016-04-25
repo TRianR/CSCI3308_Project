@@ -19,7 +19,7 @@ var Q = window.Q = Quintus({audioSupported: [ 'wav','mp3','ogg' ]})
 var MY_SCORE = 0;
 
 /** Global variable that keeps track of user lives */  
-var MY_LIVES = 3;
+var MY_LIVES = 300;
 
 /** Global variable that keeps track of user level */  
 var MY_LEVEL = 1; 
@@ -970,7 +970,7 @@ Q.load("level.json, level2.json, level3.json, level4.json, level5.json, level6.j
   });
 
   Q.stageScene("titlescreen", 0);
-  Q.stageScene("hud", 3, {score: 0, lives : 3} );
+  Q.stageScene("hud", 3, {score: 0, lives : 300} );
   Q.stageScene("mute", 2);
   
 });
