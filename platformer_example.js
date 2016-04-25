@@ -59,7 +59,7 @@ Q.Sprite.extend("Player",{
       else if(collision.obj.isA("Door")) {
 	    // Timmy going down well sound -> 'well.mp3/.wav/.ogg'
 		Q.audio.play('well.mp3');
-		Q.stageScene("stageNextLevel", 1, {buttontext : "Huh?", label: "Rubber Baby Bugger Bumper Rager!!!" });  
+		Q.stageScene("stageNextLevel", 1, {buttontext : "Huh?", label: "Rubber Baby Buggy Bumper Rager!!!" });  
         this.destroy();
       }
 	  else if(collision.obj.isA("riceball")) {
@@ -834,9 +834,17 @@ Q.scene('mute', function(stage) {
 	
    var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC",
                                                   label: "Mute" })); 
+   var onOff = 1; 
     
    button.on("click",function() {
-   	Q.audio.stop();
+   	if (onOff == 1){
+   		Q.audio.stop();
+   		onOff = 0;
+   	}
+   	else if (onOff == 0) {
+   		Q.audio.play('Music.mp3',{ loop: true });
+   		onOff = 1;
+   	}
    });
    
     container.fit(20);
