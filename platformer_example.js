@@ -84,7 +84,10 @@ Q.Sprite.extend("Player",{
       else if(collision.obj.isA("House")) {
 	    /** Timmy going down well sound -> 'well.mp3/.wav/.ogg' */
 		Q.audio.play('well.mp3');
-		Q.stageScene("titlescreen", 0, {buttontext : "You beat the game!", label: "Play again" });  
+		//Q.stageScene("titlescreen", 0, {buttontext : "You beat the game!", label: "Play again" });
+		Q.stageScene("endGame", 1, { buttontext : "You did it!" });
+		
+		  
         this.destroy();
       }
     });
@@ -187,7 +190,7 @@ Q.Sprite.extend("Enemy",{
 		Q.audio.stop();
 		MY_LEVEL = 1;
       	Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES})
-        Q.stageScene("endGame",1, { label: "Poor little Timmy died!" }); 
+        Q.stageScene("endGame",1, { buttontext: "Poor little Timmy died! Start over?" }); 
         collision.obj.destroy();
         }
         else { 
@@ -231,7 +234,7 @@ Q.Sprite.extend("Fire",{
 		Q.audio.stop();
 		MY_LEVEL = 1;
       	Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES})
-        Q.stageScene("endGame",1, { label: "Poor little Timmy died!" }); 
+        Q.stageScene("endGame",1, { buttontext: "Poor little Timmy died! Start over?" }); 
         collision.obj.destroy();
         }
         else { 
@@ -276,7 +279,7 @@ Q.Sprite.extend("Alien", {
 			
       	Q.stageScene('hud', 3, { score: MY_SCORE, lives : MY_LIVES})
       	MY_LEVEL = 1;
-        Q.stageScene("endGame",1, { label: "Poor little Timmy died!" }); 
+        Q.stageScene("endGame",1, { buttontext: "Poor little Timmy died! Start over?" }); 
         collision.obj.destroy();
         }
         else { 
@@ -768,16 +771,16 @@ Q.scene("level10",function(stage) {
 // to control the displayed message. */
 Q.scene('endGame',function(stage) {
   var container = stage.insert(new Q.UI.Container({
-    x: Q.width/2, y: Q.height/2, fill: "rgba(0,0,0,0.5)"
+    x: Q.width/2, y: Q.height/2, fill: "rgba(255,255,255,0.75)"
   }));
   
 	/** Play sound for when Timmy dies -> 'death.mp3/.wav/.ogg' */
 	Q.audio.play('death.mp3');
 
   var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC",
-                                                  label: "Start Over?" }))         
+                                                  label: stage.options.buttontext }))         
   var label = container.insert(new Q.UI.Text({x:10, y: -10 - button.p.h, 
-                                                   label: stage.options.label }));
+                                                   label: "Score: " + MY_SCORE }));
 
   button.on("click",function() {
     Q.clearStages();
@@ -785,7 +788,12 @@ Q.scene('endGame',function(stage) {
     MY_SCORE = 0;
     Q.stageScene("hud", 3, {score: MY_SCORE, lives : MY_LIVES} );
     Q.stageScene("mute", 1);
-    Q.stageScene('level1');
+    if (MY_LEVEL == 10) {
+    	Q.stageScene("titlescreen", 0);
+    }
+    else {
+    	Q.stageScene('level1');
+    }
   });
 
   /** Expand the container to visibily fit it's contents
@@ -906,7 +914,7 @@ Q.scene('mute', function(stage) {
 		y : 470
 		}));
 	
-   var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC",
+   var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "rgba(255,255,255,0.75)",
                                                   label: "Mute" })); 
    var onOff = 1; 
     
